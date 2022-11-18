@@ -1,10 +1,10 @@
-# Apitable.py
-It is the official package for the Fusion API of Apitable, and provides an API similar to the Django ORM style.
+# APITable.py
+It is the official package for the Fusion API of APITable, and provides an API similar to the Django ORM style.
 
 # Requirements
 python3.6 +
 
-If you want to call apitable rest api, you need get the API Token first: visit the workbench of Apitable, click the avatar in the lower left corner, and go to User Center > Developer Configuration. Click to generate Token (you need to bind your email for the first time).
+If you want to call apitable rest api, you need get the API Token first: visit the workbench of APITable, click the avatar in the lower left corner, and go to User Center > Developer Configuration. Click to generate Token (you need to bind your email for the first time).
 
 # Installation
 ```shell

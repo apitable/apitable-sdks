@@ -1,4 +1,4 @@
-# Code of Conduct - Apitable.py
+# Code of Conduct - APITable.py
 
 ## Our Pledge
 
