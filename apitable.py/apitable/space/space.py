@@ -23,7 +23,7 @@ class Space:
         @param dst_id_or_url: Datasheet ID or URL
         @param kwargs:
             - field_key: 'id' or 'name' 
-            - field_key_map: Field Mapping Dictionary. More info: https://github.com/apitable/apitable.py#Field-mapping
+            - field_key_map: Field Mapping Dictionary. More info: https://github.com/apitable/apitable-sdks/tree/develop/apitable.py#Field-mapping
         @return:
         """
         dst_id = get_dst_id(dst_id_or_url)

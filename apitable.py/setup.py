@@ -14,7 +14,7 @@ setuptools.setup(
     description="Apitable Python SDK",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/apitable/apitable.py",
+    url="https://github.com/apitable/apitable-sdks",
     packages=[
         "apitable", "apitable.datasheet", "apitable.types", "apitable.node", "apitable.space"
     ],
