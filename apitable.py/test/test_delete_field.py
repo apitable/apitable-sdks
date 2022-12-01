@@ -1,12 +1,12 @@
 import unittest
 import warnings
 from apitable import Apitable
-from . import TEST_TABLE, TEST_API_BASE, TEST_API_TOKEN, TEST_SPACE_ID
+from . import TOKEN, DOMAIN, SPACE_ID, DATASHEET_ID
 
 
 class TestDeleteFields(unittest.TestCase):
     """Apitable Python SDK Field delete test class
-        - Field delete SDK test
+    - Field delete SDK test
     """
 
     def setUp(self):
@@ -16,20 +16,22 @@ class TestDeleteFields(unittest.TestCase):
         - Get action sheet
         - add fields
         """
-        warnings.simplefilter('ignore', ResourceWarning)
-        apitable = Apitable(TEST_API_TOKEN)
-        apitable.set_api_base(TEST_API_BASE)
-        self.dst = apitable.space(TEST_SPACE_ID).datasheet(TEST_TABLE)
-        req_data = {'type': 'SingleText', 'name': 'title', 'property': {'defaultValue': 'hello apitable'}}
+        warnings.simplefilter("ignore", ResourceWarning)
+        apitable = Apitable(TOKEN)
+        apitable.set_api_base(DOMAIN)
+        self.dst = apitable.space(SPACE_ID).datasheet(DATASHEET_ID)
+        req_data = {
+            "type": "SingleText",
+            "name": "test_field_delete",
+            "property": {"defaultValue": "hello apitable"},
+        }
         self.field = self.dst.fields.create(req_data)
 
     def test_field_delete(self):
-        """Field delete SDK test:
-
-        """
+        """Field delete SDK test:"""
         is_true = self.dst.fields.delete(self.field.id)
         self.assertTrue(is_true)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

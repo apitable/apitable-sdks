@@ -2,15 +2,15 @@ import unittest
 import warnings
 
 from apitable import Apitable
-from . import TEST_API_BASE, TEST_API_TOKEN
+
+from . import TOKEN, DOMAIN
 
 
 class TestGetSpaces(unittest.TestCase):
-
     def setUp(self):
-        warnings.simplefilter('ignore', ResourceWarning)
-        apitable = Apitable(TEST_API_TOKEN)
-        apitable.set_api_base(TEST_API_BASE)
+        warnings.simplefilter("ignore", ResourceWarning)
+        apitable = Apitable(TOKEN)
+        apitable.set_api_base(DOMAIN)
         self.apitable = apitable
 
     def test_spaces_all(self):
@@ -21,5 +21,5 @@ class TestGetSpaces(unittest.TestCase):
         self.assertIsInstance(first_space.name, str)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

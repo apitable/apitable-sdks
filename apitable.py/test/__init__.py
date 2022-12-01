@@ -1,4 +1,4 @@
-from .env import TEST_API_BASE, TEST_API_TOKEN, TEST_TABLE, TEST_SPACE_ID
+from .env import SPACE_ID, FOLDER_ID, DATASHEET_ID, VIEW_ID, TOKEN, DOMAIN
 from .test_create_records import TestCreateRecords
 from .test_delete_records import TestDeleteRecords
 from .test_get_fields import TestGetFields

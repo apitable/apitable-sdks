@@ -4,8 +4,11 @@ env = Env()
 env.read_env()
 
 API_BASE = "https://apitable.com"
-TEST_TABLE = env("TEST_TABLE")
-TEST_API_TOKEN = env("TEST_API_TOKEN")
-TEST_API_BASE = env("TEST_API_BASE") or API_BASE
-TEST_SPACE_ID = env("TEST_SPACE_ID")
-TEST_FOLDER_ID = env("TEST_FOLDER_ID")
+
+SPACE_ID = env("SPACE_ID")
+FOLDER_ID = env("FOLDER_ID")
+DATASHEET_ID = env("PYTHON_DATASHEET_ID")
+VIEW_ID = env("PYTHON_VIEW_ID")
+TOKEN = env("TOKEN")
+
+DOMAIN = "https://" + env("DOMAIN") or API_BASE

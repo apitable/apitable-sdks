@@ -2,28 +2,27 @@ import unittest
 import warnings
 
 from apitable import Apitable
-from . import TEST_TABLE, TEST_API_BASE, TEST_API_TOKEN
+from . import TOKEN, DOMAIN, SPACE_ID, DATASHEET_ID, VIEW_ID
 
 
 class TestGetRecords(unittest.TestCase):
-
     def setUp(self):
-        warnings.simplefilter('ignore', ResourceWarning)
-        apitable = Apitable(TEST_API_TOKEN)
-        apitable.set_api_base(TEST_API_BASE)
-        self.dst = apitable.datasheet(TEST_TABLE)
+        warnings.simplefilter("ignore", ResourceWarning)
+        apitable = Apitable(TOKEN)
+        apitable.set_api_base(DOMAIN)
+        self.dst = apitable.space(SPACE_ID).datasheet(DATASHEET_ID)
 
     def test_record_count(self):
         self.assertEqual(self.dst.records.all().count(), 1)
 
     def test_record_filter_get(self):
         self.assertEqual(
-            self.dst.records.filter(title="apitable").get().title, "apitable")
+            self.dst.records.filter(title="apitable").get().title, "apitable"
+        )
 
     def test_record_all(self):
-        # Views that do not exist return empty records
         self.assertEqual(
-            self.dst.records.all(viewId="viw6oKVVbMynt").count(), 0)
+            self.dst.records.all(viewId=VIEW_ID).count(), 1)
 
     def test_get_or_create(self):
         # Ger record
@@ -42,5 +41,5 @@ class TestGetRecords(unittest.TestCase):
     #     self.assertEqual(self.dst.records.all(pageNum=2).count(), 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
