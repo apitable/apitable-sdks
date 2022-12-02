@@ -13,5 +13,12 @@ With the API, you can:
 - Java: [apitable.java](https://github.com/apitable/apitable-sdks/apitable.java) - Official APITable JavaScript SDK
 - PHP: [apitable.php](https://github.com/apitable/apitable-sdks/apitable.php) -Official APITable JavaScript SDK
 
+| APITable SDKs                                                                    | Packages                                                                                                          |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| JavaScript: [apitable.js](https://github.com/apitable/apitable-sdks/apitable.js) | [![npm version](https://img.shields.io/npm/v/apitable?style=flat-square)](https://www.npmjs.com/package/apitable) |
+| Python: [apitable.py](https://github.com/apitable/apitable-sdks/apitable.py)     |                                                                                                                   |
+| Golang: [apitable.go](https://github.com/apitable/apitable-sdks/apitable.go)     |                                                                                                                   |
+| Java: [apitable.java](https://github.com/apitable/apitable-sdks/apitable.java)   |                                                                                                                   |
+| PHP: [apitable.php](https://github.com/apitable/apitable-sdks/apitable.php)      |                                                                                                                   |
 
 If you find a bug in this repository, please [submit an issue](https://github.com/apitable/apitable-sdks/issues).
