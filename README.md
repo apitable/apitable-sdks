@@ -7,12 +7,6 @@ With the API, you can:
 >
 >...
 
-- JavaScript: [apitable.js](https://github.com/apitable/apitable-sdks/apitable.js) - Official APITable JavaScript SDK
-- Python: [apitable.py](https://github.com/apitable/apitable-sdks/apitable.py) - Official APITable Python SDK
-- Golang: [apitable.go](https://github.com/apitable/apitable-sdks/apitable.go) - Official APITable JavaScript SDK
-- Java: [apitable.java](https://github.com/apitable/apitable-sdks/apitable.java) - Official APITable JavaScript SDK
-- PHP: [apitable.php](https://github.com/apitable/apitable-sdks/apitable.php) -Official APITable JavaScript SDK
-
 | APITable SDKs                                                                    | Packages                                                                                                          |
 | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | JavaScript: [apitable.js](https://github.com/apitable/apitable-sdks/apitable.js) | [![npm version](https://img.shields.io/npm/v/apitable?style=flat-square)](https://www.npmjs.com/package/apitable) |
