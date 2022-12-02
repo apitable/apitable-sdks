@@ -1,0 +1,34 @@
+{
+  "name": "apitable/apitable-sdk-php",
+  "description": "ApiTable php SDK",
+  "license": "MIT",
+  "type": "library",
+  "homepage": "https://apitable.com",
+  "keywords": [
+    "apitable",
+    "php-sdk"
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/ApiTable.php"
+    ],
+    "psr-4": {
+      "ApiTable\\": "src",
+      "Test\\": "test"
+    }
+  },
+  "authors": [
+    {
+      "name": "zoe",
+      "email": "zoe@icu.com",
+      "homepage": "https://github.com/apitable",
+      "role": "Developer"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
