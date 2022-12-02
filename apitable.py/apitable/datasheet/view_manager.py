@@ -10,7 +10,7 @@ class ViewManager:
 
     def all(self) -> List[MetaView]:
         """
-        Query all views of the current Vig table
+        Query all views of the current datasheet
         @return: List[MetaView]
         """
         return self.dst.get_views()
