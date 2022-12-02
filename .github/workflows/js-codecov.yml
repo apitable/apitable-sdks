@@ -6,7 +6,9 @@ name: Node.js Auto Test
 on:
   push:
     branches: [ "develop", "main" ]
-    paths: 'apitable.js/**'
+    paths:
+      - 'apitable.js/**'
+      - '.github/workflows/js-codecov.yml'
     tags:
       - 'apitable.js@'
   pull_request:
