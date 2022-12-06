@@ -24,7 +24,7 @@ func main() {
 	cpf := profile.NewClientProfile()
 	// upload pictures
 	attachment1, err := uploadImage(credential, cpf)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		fmt.Printf("uploadImage:An API error has returned: %s", err)
 		return
 	}

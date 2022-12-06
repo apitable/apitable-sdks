@@ -60,17 +60,17 @@ func FileBuffer(filePath string) ([]byte, string, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return nil, "", aterror.NewAPITableSDKError(500, msg, "ClientError.FileReadError")
+		return nil, "", aterror.NewSDKError(500, msg, "ClientError.FileReadError")
 	}
 	mimeType, err := GetFileContentType(file)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return nil, "", aterror.NewAPITableSDKError(500, msg, "ClientError.FileReadError")
+		return nil, "", aterror.NewSDKError(500, msg, "ClientError.FileReadError")
 	}
 	fileWriter, err := createFormFile(bodyWriter, "file", filePath, mimeType)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return nil, "", aterror.NewAPITableSDKError(500, msg, "ClientError.MultipartError")
+		return nil, "", aterror.NewSDKError(500, msg, "ClientError.MultipartError")
 	}
 	// don't forget closing opening file.
 	defer file.Close()
@@ -163,7 +163,7 @@ func (c *Client) sendWithToken(request athttp.Request, response athttp.Response)
 	httpResponse, err := c.httpClient.Do(httpRequest)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return aterror.NewAPITableSDKError(500, msg, "ClientError.NetworkError")
+		return aterror.NewSDKError(500, msg, "ClientError.NetworkError")
 	}
 	err = athttp.ParseFromHttpResponse(httpResponse, response)
 	return err
