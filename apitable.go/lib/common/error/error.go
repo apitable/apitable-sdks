@@ -3,32 +3,32 @@ package error
 
 import "fmt"
 
-type APITableError struct {
+type SDKError struct {
 	Code      int
 	Message   string
 	RequestId string
 }
 
-func (e *APITableError) Error() string {
+func (e *SDKError) Error() string {
 	return fmt.Sprintf("[SDKError] Code=%d, Message=%s, RequestId=%s", e.Code, e.Message, e.RequestId)
 }
 
-func NewAPITableSDKError(code int, message, requestId string) error {
-	return &APITableError{
+func NewSDKError(code int, message, requestId string) error {
+	return &SDKError{
 		Code:      code,
 		Message:   message,
 		RequestId: requestId,
 	}
 }
 
-func (e *APITableError) GetCode() int {
+func (e *SDKError) GetCode() int {
 	return e.Code
 }
 
-func (e *APITableError) GetMessage() string {
+func (e *SDKError) GetMessage() string {
 	return e.Message
 }
 
-func (e *APITableError) GetRequestId() string {
+func (e *SDKError) GetRequestId() string {
 	return e.RequestId
 }

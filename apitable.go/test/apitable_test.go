@@ -28,7 +28,7 @@ func TestCreateRecords(t *testing.T) {
 		},
 	}
 	records, err := datasheet.CreateRecords(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -54,7 +54,7 @@ func TestDescribeAllRecords(t *testing.T) {
 	}
 	request.Fields = common.StringPtrs([]string{os.Getenv("NUMBER_FIELD_NAME")})
 	records, err := datasheet.DescribeAllRecords(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -80,7 +80,7 @@ func TestDescribeRecords(t *testing.T) {
 	}
 	request.Fields = common.StringPtrs([]string{os.Getenv("NUMBER_FIELD_NAME")})
 	records, err := datasheet.DescribeRecords(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -110,7 +110,7 @@ func TestModifyRecords(t *testing.T) {
 		},
 	}
 	records, err := datasheet.ModifyRecords(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -133,7 +133,7 @@ func TestDeleteRecords(t *testing.T) {
 	request := apitable.NewDeleteRecordsRequest()
 	request.RecordIds = []*string{record.RecordId}
 	err := datasheet.DeleteRecords(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		fmt.Printf("An API error has returned: %s", err)
 		return
 	}
@@ -154,7 +154,7 @@ func TestUpload(t *testing.T) {
 	request := apitable.NewUploadRequest()
 	request.FilePath = "image.png"
 	attachment, err := datasheet.UploadFile(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		fmt.Printf("An API error has returned: %s", err)
 		return
 	}
@@ -175,7 +175,7 @@ func TestDescribeFields(t *testing.T) {
 	describeRequest := apitable.NewDescribeFieldsRequest()
 	describeRequest.ViewId = common.StringPtr(os.Getenv("VIEW_ID"))
 	fields, err := datasheet.DescribeFields(describeRequest)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -198,7 +198,7 @@ func TestDescribeViews(t *testing.T) {
 	datasheet, _ := apitable.NewDatasheet(credential, os.Getenv("DATASHEET_ID"), cpf)
 	describeRequest := apitable.NewDescribeViewsRequest()
 	views, err := datasheet.DescribeViews(describeRequest)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -218,7 +218,7 @@ func TestDescribeSpaces(t *testing.T) {
 	spaceClient, _ := space.NewSpace(credential, "", cpf)
 	describeRequest := space.NewDescribeSpacesRequest()
 	spaces, err := spaceClient.DescribeSpaces(describeRequest)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -238,7 +238,7 @@ func TestDescribeNodes(t *testing.T) {
 	spaceClient, _ := space.NewSpace(credential, os.Getenv("SPACE_ID"), cpf)
 	describeRequest := space.NewDescribeNodesRequest()
 	nodes, err := spaceClient.DescribeNodes(describeRequest)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.
@@ -259,7 +259,7 @@ func TestDescribeNode(t *testing.T) {
 	describeRequest := space.NewDescribeNodeRequest()
 	describeRequest.NodeId = common.StringPtr(os.Getenv("DATASHEET_ID"))
 	node, err := spaceClient.DescribeNode(describeRequest)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
 		t.Errorf("An API error has returned: %s", err)
 	}
 	// Non-SDK exception, direct failure. Other processing can be added to the actual code.

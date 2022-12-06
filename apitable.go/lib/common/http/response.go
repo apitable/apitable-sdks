@@ -32,10 +32,10 @@ func (r *BaseResponse) ParseErrorFromHTTPResponse(body []byte) (err error) {
 	err = json.Unmarshal(body, resp)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", body, err)
-		return aterror.NewAPITableSDKError(500, msg, "ClientError.ParseJsonError")
+		return aterror.NewSDKError(500, msg, "ClientError.ParseJsonError")
 	}
 	if resp.Code != 200 {
-		return aterror.NewAPITableSDKError(resp.Code, resp.Message, resp.Message)
+		return aterror.NewSDKError(resp.Code, resp.Message, resp.Message)
 	}
 	return nil
 }
@@ -45,11 +45,11 @@ func ParseFromHttpResponse(hr *http.Response, response Response) (err error) {
 	body, err := ioutil.ReadAll(hr.Body)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to read response body because %s", err)
-		return aterror.NewAPITableSDKError(500, msg, "ClientError.IOError")
+		return aterror.NewSDKError(500, msg, "ClientError.IOError")
 	}
 	if !(hr.StatusCode == 200 || hr.StatusCode == 201) {
 		msg := fmt.Sprintf("Request fail with http status code: %s, with body: %s", hr.Status, body)
-		return aterror.NewAPITableSDKError(hr.StatusCode, msg, "ClientError.HttpStatusCodeError")
+		return aterror.NewSDKError(hr.StatusCode, msg, "ClientError.HttpStatusCodeError")
 	}
 	//log.Printf("[DEBUG] Response Body=%s", body)
 	err = response.ParseErrorFromHTTPResponse(body)
@@ -59,7 +59,7 @@ func ParseFromHttpResponse(hr *http.Response, response Response) (err error) {
 	err = json.Unmarshal(body, &response)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", body, err)
-		return aterror.NewAPITableSDKError(500, msg, "ClientError.ParseJsonError")
+		return aterror.NewSDKError(500, msg, "ClientError.ParseJsonError")
 	}
 	return
 }

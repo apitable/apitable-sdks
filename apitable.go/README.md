@@ -45,7 +45,7 @@ func main() {
     }
     request.Fields = common.StringPtrs([]string{"number_field"})
     records, err := datasheet.DescribeAllRecords(request)
-    if _, ok := err.(*aterror.APITableError); ok {
+    if _, ok := err.(*aterror.SDKError); ok {
        fmt.Printf("An API error has returned: %s", err)
        return
     }
@@ -57,7 +57,7 @@ func main() {
     fmt.Printf("%#v\n", records)
     // paging to get data
     page, err := datasheet.DescribeRecords(request)
-	if _, ok := err.(*aterror.APITableError); ok {
+	if _, ok := err.(*aterror.SDKError); ok {
        fmt.Printf("An API error has returned: %s", err)
        return
     }
@@ -77,7 +77,7 @@ func main() {
         },
     }
     createRecords, err := datasheet.CreateRecords(createRequest)
-    if _, ok := err.(*aterror.APITableError); ok {
+    if _, ok := err.(*aterror.SDKError); ok {
        fmt.Printf("An API error has returned: %s", err)
        return
     }
@@ -98,7 +98,7 @@ func main() {
         },
     }
     modifyRecords, err := datasheet.ModifyRecords(modifyRequest)
-    if _, ok := err.(*aterror.APITableError); ok {
+    if _, ok := err.(*aterror.SDKError); ok {
        fmt.Printf("An API error has returned: %s", err)
        return
     }
@@ -112,7 +112,7 @@ func main() {
     deleteRequest := apitable.NewDeleteRecordsRequest()
     request.RecordIds =	common.StringPtrs([]string{"recordId1", "recordId2"})
     err = datasheet.DeleteRecords(deleteRequest)
-    if _, ok := err.(*aterror.APITableError); ok {
+    if _, ok := err.(*aterror.SDKError); ok {
        fmt.Printf("An API error has returned: %s", err)
        return
     }
@@ -125,7 +125,7 @@ func main() {
     uploadRequest := apitable.NewUploadRequest()
     request.FilePath = "image.png"
     attachment, err := datasheet.UploadFile(request)
-    if _, ok := err.(*aterror.APITableError); ok {
+    if _, ok := err.(*aterror.SDKError); ok {
        fmt.Printf("An API error has returned: %s", err)
        return
     }
