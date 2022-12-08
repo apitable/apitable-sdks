@@ -1,4 +1,6 @@
 # APITable.py
+[![Latest Version](https://shields.mitmproxy.org/pypi/v/apitable.svg)](https://pypi.python.org/pypi/apitable)
+
 It is the official package for the Fusion API of APITable, and provides an API similar to the Django ORM style.
 
 # Requirements
