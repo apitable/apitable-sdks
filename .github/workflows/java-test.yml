@@ -34,8 +34,8 @@ jobs:
       - name: Test
         env:
           DOMAIN: ${{ secrets.DOMAIN }}
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.JAVA_TOKEN }}
           SPACE_ID: ${{ secrets.SPACE_ID }}
           DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
           VIEW_ID: ${{ secrets.VIEW_ID }}
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+        run: mvn --batch-mode test -Dmaven.test.skip=false
