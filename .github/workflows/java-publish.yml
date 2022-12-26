@@ -22,11 +22,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
-          
+
       - name: Publish to Maven Central Repo
-        uses: samuelmeuli/action-maven-publish@v1
-        with:
-          gpg_private_key: ${{ secrets.GPG_SECRET }}
-          gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
-          nexus_username: ${{ secrets.SONATYPE_USERNAME }}
-          nexus_password: ${{ secrets.SONATYPE_PASSWORD }}
+        run: cd apitable.java
+             mvn clean source:jar install deploy -Dmaven.test.skip
