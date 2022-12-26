@@ -149,30 +149,30 @@ public class RecordPagerTest {
         Thread.sleep(1000);
     }
 
-    @Test
-    @Order(105)
-    void testPageWithSort() throws ApiException, JsonProcessingException, InterruptedException {
-        String[] sorts = TEST_SORT.get().split(",");
-        ApiQueryParam queryParam = ApiQueryParam.newInstance();
-        for (String s : sorts) {
-            String[] sort = s.split(":");
-            queryParam.withSort(sort[0], com.apitable.client.api.model.Order.of(sort[1]));
-        }
-        Pager<Record> pager = apitableApiClient.getRecordApi().getRecords(DATASHEET_ID, queryParam);
-        assertThat(pager).isNotNull();
-        int pageIndex = 0;
-        while (pager.hasNext()) {
-            long startTime = System.currentTimeMillis();
-            List<Record> records = pager.next();
-            System.out.format("cost time: %d ms \n", (System.currentTimeMillis() - startTime));
-            pageIndex++;
-            assertThat(pageIndex).isEqualTo(pager.getCurrentPage());
-            for (Record record : records) {
-                System.out.format("record: %s \n", JacksonJsonUtil.toJson(record, true));
-            }
-        }
-        Thread.sleep(1000);
-    }
+//    @Test
+//    @Order(105)
+//    void testPageWithSort() throws ApiException, JsonProcessingException, InterruptedException {
+//        String[] sorts = TEST_SORT.get().split(",");
+//        ApiQueryParam queryParam = ApiQueryParam.newInstance();
+//        for (String s : sorts) {
+//            String[] sort = s.split(":");
+//            queryParam.withSort(sort[0], com.apitable.client.api.model.Order.of(sort[1]));
+//        }
+//        Pager<Record> pager = apitableApiClient.getRecordApi().getRecords(DATASHEET_ID, queryParam);
+//        assertThat(pager).isNotNull();
+//        int pageIndex = 0;
+//        while (pager.hasNext()) {
+//            long startTime = System.currentTimeMillis();
+//            List<Record> records = pager.next();
+//            System.out.format("cost time: %d ms \n", (System.currentTimeMillis() - startTime));
+//            pageIndex++;
+//            assertThat(pageIndex).isEqualTo(pager.getCurrentPage());
+//            for (Record record : records) {
+//                System.out.format("record: %s \n", JacksonJsonUtil.toJson(record, true));
+//            }
+//        }
+//        Thread.sleep(1000);
+//    }
 
     @Test
     @Order(106)
