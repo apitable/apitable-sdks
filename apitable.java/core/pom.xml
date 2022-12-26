@@ -11,7 +11,7 @@
     <artifactId>apitable-core</artifactId>
     <name>APITable Sdk Core</name>
     <description>APITable Sdk Core</description>
-    <url>https://github.com/apitable/apitable.java</url>
+    <url>https://github.com/apitable/apitable-sdks/tree/develop/apitable.java</url>
 
     <dependencies>
         <dependency>

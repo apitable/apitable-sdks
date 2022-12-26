@@ -8,11 +8,11 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
     <name>APITable Sdk Parent</name>
-    <description>This is a project for apitable, written by java</description>
-    <url>https://github.com/apitable/apitable.java</url>
+    <description>This is a project for APITable, written in java</description>
+    <url>https://github.com/apitable/apitable-sdks/tree/develop/apitable.java</url>
 
     <properties>
-        <revision>1.0.4</revision>
+        <revision>1.0.0-SNAPSHOT</revision>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -55,7 +55,7 @@
     </modules>
 
     <organization>
-        <name>apitable LTD</name>
+        <name>APITable LTD</name>
         <url>https://apitable.com</url>
     </organization>
 
@@ -68,10 +68,10 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/apitable/apitable.java</url>
-        <connection>scm:git:git@github.com:apitable/apitable.java.git</connection>
+        <url>https://github.com/apitable/apitable-sdks/tree/develop/apitable.java</url>
+        <connection>scm:git@github.com:apitable/apitable-sdks.git</connection>
         <developerConnection>
-            scm:git:git@github.com:apitable/apitable.java.git
+            scm:git:git@github.com:apitable/apitable-sdks.git
         </developerConnection>
     </scm>
 
@@ -90,7 +90,7 @@
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/apitable/apitable.java/issues</url>
+        <url>https://github.com/apitable/apitable-sdks/issues</url>
     </issueManagement>
 
     <dependencyManagement>
@@ -585,8 +585,8 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <name>Central Repository OSSRH</name>
+            <id>sonatype-release</id>
+            <name>Nexus Release Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
