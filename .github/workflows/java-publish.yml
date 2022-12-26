@@ -28,9 +28,10 @@ jobs:
           gpg-passphrase: ${{ secrets.GPG_PASSWORD }}
 
       - name: Publish to Maven Central Repo
-        uses: samuelmeuli/action-maven-publish@v1
+#        uses: samuelmeuli/action-maven-publish@v1
         with:
           gpg_private_key: ${{ secrets.GPG_SECRET }}
           gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
           nexus_username: ${{ secrets.SONATYPE_USERNAME }}
           nexus_password: ${{ secrets.SONATYPE_PASSWORD }}
+        run: mvn clean deploy -Prelease --settings apitable.java/.mvn/settings.xml -Dgpg.executable=gpg2 -Dgpg.keyname="$gpg_private_key"-Dgpg.passphrase="$gpg_passphrase"
