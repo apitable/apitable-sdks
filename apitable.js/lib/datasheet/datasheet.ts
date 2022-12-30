@@ -6,6 +6,7 @@ import { APITable } from '../apitable';
 import { FieldManager } from './field';
 import { RecordManager } from './record';
 import { ViewManager } from './view';
+import { IEmbedLinkCreateRo, IEmbedLinkCreateVo } from '../interface/embed.link';
 
 
 export class Datasheet {
@@ -69,4 +70,38 @@ export class Datasheet {
     });
   }
 
+  async createEmbedLink(embedLinkCreateRo: IEmbedLinkCreateRo) {
+    if (!this.spaceId) {
+      throw new Error('Please enter the spaceId parameter when building the space object to determine the space station for the operation.');
+    }
+    return await this.apitable.request<IEmbedLinkCreateVo>({
+      path: `/spaces/${this.spaceId}/nodes/${this.datasheetId}/embedlinks`,
+      method: 'post',
+      data: embedLinkCreateRo
+    });
+  }
+
+  async getEmbedLinks() {
+    if (!this.spaceId) {
+      throw new Error('Please enter the spaceId parameter when building the space object to determine the space station for the operation.');
+    }
+    return await this.apitable.request<IEmbedLinkCreateVo[]>({
+      path: `/spaces/${this.spaceId}/nodes/${this.datasheetId}/embedlinks`,
+      method: 'get'
+    })
+  }
+
+  /**
+   * @param linkId 
+   * @returns 
+   */
+  async deleteEmbedLink(linkId: string) {
+    if (!this.spaceId) {
+      throw new Error('Please enter the spaceId parameter when building the space object to determine the space station for the operation.');
+    }
+    return await this.apitable.request<IEmbedLinkCreateVo[]>({
+      path: `/spaces/${this.spaceId}/nodes/${this.datasheetId}/embedlinks/${linkId}`,
+      method: 'delete'
+    })
+  }
 }
