@@ -26,13 +26,13 @@
     <servers>
         <server>
             <id>sonatype-snapshot</id>
-            <username>${env.nexus_username}</username>
-            <password>${env.nexus_password}</password>
+            <username>${env.MAVEN_USERNAME}</username>
+            <password>${env.MAVEN_PASSWORD}</password>
         </server>
         <server>
             <id>sonatype-release</id>
-            <username>${env.nexus_username}</username>
-            <password>${env.nexus_password}</password>
+            <username>${env.MAVEN_USERNAME}</username>
+            <password>${env.MAVEN_PASSWORD}</password>
         </server>
     </servers>
 </settings>
