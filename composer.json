@@ -1,0 +1,21 @@
+{
+  "name": "apitable/sdk-php",
+  "description": "ApiTable php SDK",
+  "license": "MIT",
+  "type": "library",
+  "homepage": "https://apitable.com",
+  "keywords": [
+    "apitable",
+    "php-sdk"
+  ],
+  "require": {
+    "apitable/apitable-sdk-php": "dev-develop"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./apitable.php/"
+    }
+  ]
+ 
+}
