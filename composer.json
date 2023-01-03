@@ -13,11 +13,11 @@
   },
   "autoload": {
     "classmap": [
-      "src/ApiTable.php"
+      "apitable.php/src/ApiTable.php"
     ],
     "psr-4": {
-      "ApiTable\\": "src",
-      "Test\\": "test"
+      "ApiTable\\": "apitable.php/src",
+      "Test\\": "apitable.php/test"
     }
   },
   "require-dev": {
