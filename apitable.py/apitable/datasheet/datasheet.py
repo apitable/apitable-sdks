@@ -11,6 +11,7 @@ from apitable.exceptions import ErrorSortParams
 from apitable.datasheet.field_manager import FieldManager
 from apitable.datasheet.record import Record
 from apitable.datasheet.record_manager import RecordManager
+from apitable.types import EmbedLinkCreateRo
 from apitable.types.response import (
     GETMetaFieldResponse,
     PostMetaFieldResponse,
@@ -22,6 +23,11 @@ from apitable.types.response import (
     GETMetaViewResponse,
     GETRecordResponse,
     DeleteFieldResponse,
+    PostEmbedLinkResponse,
+    GetEmbedLinkResponse,
+    PostEmbedLinkResponseData,
+    GetEmbedLinkResponseData,
+    DeleteEmbedLinkResponse,
 )
 from apitable.utils import FieldKeyMap, handle_response, check_sort_params, trans_data, timed_lru_cache
 from apitable.datasheet.view_manager import ViewManager
@@ -171,7 +177,7 @@ class Datasheet:
                     "fields": trans_data(self.field_key_map, item)
                 } for item in data],
                 "fieldKey":
-                self.field_key,
+                    self.field_key,
             }
         else:
             data = {
@@ -191,7 +197,7 @@ class Datasheet:
             rec = rec_list
             ids = rec._id if type(rec) is Record else rec
         resp = self.apitable.request.delete(api_endpoint,
-                                        params={"recordIds": ids})
+                                            params={"recordIds": ids})
         r = handle_response(resp, DeleteRecordResponse)
         return r.success
 
@@ -201,7 +207,7 @@ class Datasheet:
         else:
             data = {"records": [data], "fieldKey": self.field_key}
         r = self.apitable.request.patch(self._record_api_endpoint,
-                                    json=data).json()
+                                        json=data).json()
         if r["success"]:
             r = PatchRecordResponse(**r)
             return r.data.records
@@ -253,3 +259,22 @@ class Datasheet:
         up_file_resp = handle_response(r, UploadFileResponse)
         if up_file_resp.success:
             return up_file_resp.data
+
+    def create_embed_link(self, data: EmbedLinkCreateRo = None) -> PostEmbedLinkResponseData:
+        api_endpoint = urljoin(self.apitable.api_base,
+                               f"/fusion/v1/spaces/{self.spc_id}/nodes/{self.id}/embedlinks")
+        resp = self.apitable.request.post(api_endpoint, json=data)
+        return handle_response(resp, PostEmbedLinkResponse).data
+
+    def get_embed_links(self) -> List[GetEmbedLinkResponseData]:
+        api_endpoint = urljoin(self.apitable.api_base,
+                               f"/fusion/v1/spaces/{self.spc_id}/nodes/{self.id}/embedlinks")
+        resp = self.apitable.request.get(api_endpoint)
+        return handle_response(resp, GetEmbedLinkResponse).data
+
+    def delete_embed_link(self, link_id: str) -> bool:
+        api_endpoint = urljoin(self.apitable.api_base,
+                               f"/fusion/v1/spaces/{self.spc_id}/nodes/{self.id}/embedlinks/{link_id}")
+        resp = self.apitable.request.delete(api_endpoint)
+        r = handle_response(resp, DeleteEmbedLinkResponse)
+        return r.success

@@ -9,3 +9,4 @@ from .test_get_views import TestGetViews
 from .test_update_records import TestUpdateRecords
 from .test_upload_file import TestUploadFile
 from .test_utils import TestUtils
+from .test_create_embed_link import TestEmbedLinkCRD
