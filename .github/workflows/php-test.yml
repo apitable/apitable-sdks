@@ -12,7 +12,6 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: apitable.php
 
 jobs:
 
