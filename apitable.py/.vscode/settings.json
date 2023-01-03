@@ -2,6 +2,7 @@
   "cSpell.words": [
     "apitable"
   ],
+  "python.languageServer": "Pylance",
   "python.formatting.provider": "black",
   "python.linting.flake8Args": [
     "--max-line-length=248"
