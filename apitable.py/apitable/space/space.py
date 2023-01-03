@@ -1,7 +1,7 @@
-from apitable.node import NodeManager
-from apitable.utils import get_dst_id, handle_response
-from apitable.datasheet import Datasheet, DatasheetManager
-from apitable.types.response import PostDatasheetMetaResponse
+from .node import NodeManager
+from .utils import get_dst_id, handle_response
+from .datasheet import Datasheet, DatasheetManager
+from .types.response import PostDatasheetMetaResponse
 from urllib.parse import urljoin
 
 

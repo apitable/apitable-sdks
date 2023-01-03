@@ -1,10 +1,10 @@
 from typing import List
 
-from apitable.const import MAX_WRITE_RECORDS_PRE_REQ
-from apitable.datasheet.record import Record
-from apitable.exceptions import RecordDoesNotExist
-from apitable.types import RawRecord
-from apitable.utils import chunks, trans_key
+from .const import MAX_WRITE_RECORDS_PRE_REQ
+from .datasheet.record import Record
+from .exceptions import RecordDoesNotExist
+from .types import RawRecord
+from .utils import chunks, trans_key
 
 
 class QuerySet:

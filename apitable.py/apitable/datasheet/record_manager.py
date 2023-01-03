@@ -1,11 +1,11 @@
 from typing import List
 
-from apitable.const import MAX_GET_RECORDS_PRE_REQ, MAX_WRITE_RECORDS_PRE_REQ
-from apitable.datasheet.query_set import QuerySet
-from apitable.datasheet.record import Record
-from apitable.exceptions import RecordDoesNotExist
-from apitable.types import GETRecordResponse
-from apitable.utils import query_parse, trans_data
+from .const import MAX_GET_RECORDS_PRE_REQ, MAX_WRITE_RECORDS_PRE_REQ
+from .datasheet.query_set import QuerySet
+from .datasheet.record import Record
+from .exceptions import RecordDoesNotExist
+from .types import GETRecordResponse
+from .utils import query_parse, trans_data
 
 
 class RecordManager:

@@ -1,6 +1,6 @@
 from typing import List
 
-from apitable.types import MetaView
+from .types import MetaView
 
 
 class ViewManager:

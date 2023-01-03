@@ -6,13 +6,13 @@ from urllib.parse import urljoin
 
 import requests
 
-from apitable.const import API_GET_DATASHEET_QS_SET, DEFAULT_PAGE_SIZE
-from apitable.exceptions import ErrorSortParams
-from apitable.datasheet.field_manager import FieldManager
-from apitable.datasheet.record import Record
-from apitable.datasheet.record_manager import RecordManager
-from apitable.types import EmbedLinkCreateRo
-from apitable.types.response import (
+from .const import API_GET_DATASHEET_QS_SET, DEFAULT_PAGE_SIZE
+from .exceptions import ErrorSortParams
+from .datasheet.field_manager import FieldManager
+from .datasheet.record import Record
+from .datasheet.record_manager import RecordManager
+from .types import EmbedLinkCreateRo
+from .types.response import (
     GETMetaFieldResponse,
     PostMetaFieldResponse,
     PatchRecordResponse,
@@ -29,8 +29,8 @@ from apitable.types.response import (
     GetEmbedLinkResponseData,
     DeleteEmbedLinkResponse,
 )
-from apitable.utils import FieldKeyMap, handle_response, check_sort_params, trans_data, timed_lru_cache
-from apitable.datasheet.view_manager import ViewManager
+from .utils import FieldKeyMap, handle_response, check_sort_params, trans_data, timed_lru_cache
+from .datasheet.view_manager import ViewManager
 
 
 class Datasheet:

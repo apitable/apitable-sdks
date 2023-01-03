@@ -1,6 +1,6 @@
 from typing import Optional, List, Dict, Any
-from apitable.types.field import MetaField
-from apitable.utils import trans_key
+from .types.field import MetaField
+from .utils import trans_key
 
 
 class FieldManager:

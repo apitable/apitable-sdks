@@ -1,11 +1,11 @@
 from typing import Dict, Any, List, Optional
 
-from apitable.types.embedlink import EmbedLinkThemeEnum, EmbedLinkPayload
-from apitable.types.node import NodeListItem, NodeDetail
-from apitable.types.space import SpaceListItem
-from apitable.types.record import RawRecord
-from apitable.types.view import MetaView
-from apitable.types.field import MetaField
+from .types.embedlink import EmbedLinkThemeEnum, EmbedLinkPayload
+from .types.node import NodeListItem, NodeDetail
+from .types.space import SpaceListItem
+from .types.record import RawRecord
+from .types.view import MetaView
+from .types.field import MetaField
 from pydantic import BaseModel
 
 
