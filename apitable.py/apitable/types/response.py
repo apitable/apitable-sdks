@@ -1,5 +1,6 @@
 from typing import Dict, Any, List, Optional
 
+from apitable.types.embedlink import EmbedLinkThemeEnum, EmbedLinkPayload
 from apitable.types.node import NodeListItem, NodeDetail
 from apitable.types.space import SpaceListItem
 from apitable.types.record import RawRecord
@@ -129,3 +130,24 @@ class PostDatasheetMetaResponseData(BaseModel):
 class PostDatasheetMetaResponse(ResponseBase):
     data: PostDatasheetMetaResponseData
 
+
+class PostEmbedLinkResponseData(BaseModel):
+    payload: Optional[EmbedLinkPayload]
+    theme: Optional[EmbedLinkThemeEnum]
+    linkId: str
+    url: str
+
+
+class PostEmbedLinkResponse(ResponseBase):
+    data: PostEmbedLinkResponseData
+
+
+GetEmbedLinkResponseData = PostEmbedLinkResponseData
+
+
+class GetEmbedLinkResponse(ResponseBase):
+    data: List[GetEmbedLinkResponseData]
+
+
+class DeleteEmbedLinkResponse(ResponseBase):
+    pass
