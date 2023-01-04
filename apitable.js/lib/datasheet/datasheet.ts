@@ -70,7 +70,7 @@ export class Datasheet {
     });
   }
 
-  async createEmbedLink(embedLinkCreateRo: IEmbedLinkCreateRo) {
+  async createEmbedLink(embedLinkCreateRo?: IEmbedLinkCreateRo) {
     if (!this.spaceId) {
       throw new Error('Please enter the spaceId parameter when building the space object to determine the space station for the operation.');
     }
