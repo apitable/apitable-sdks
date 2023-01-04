@@ -2,7 +2,7 @@ import time
 import unittest
 import warnings
 from apitable import Apitable
-from apitable.types import EmbedLinkThemeEnum
+from apitable.types import EmbedLinkThemeEnum,EmbedLinkPermissionType
 from . import DOMAIN, TOKEN, SPACE_ID, DATASHEET_ID
 
 
@@ -34,7 +34,7 @@ class TestEmbedLinkCRD(unittest.TestCase):
                         "collapsed": False,
                     },
                     "bannerLogo": True,
-                    "permissionType": "readOnly",
+                    "permissionType": EmbedLinkPermissionType.READ_ONLY,
                 },
                 "theme": EmbedLinkThemeEnum.Light,
             }
