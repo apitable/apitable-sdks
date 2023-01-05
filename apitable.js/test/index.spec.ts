@@ -18,6 +18,7 @@ describe('full pipeline', () => {
   const datasheetId = process.env.DATASHEET_ID as string;
   const folderId = process.env.FOLDER_ID as string;
   const spaceId = process.env.SPACE_ID as string;
+  const viewId = process.env.VIEW_ID as string;
   
   const apitable = new APITable({
     token,
@@ -184,7 +185,7 @@ describe('full pipeline', () => {
       "paylod": {
         "primarySideBar": { "collapsed": false },
         "viewControl": {
-          "viewId": "viwBBc0PMN3WB",
+          "viewId": viewId,
           "tabBar": false,
           "toolBar": {
             "basicTools": false,
