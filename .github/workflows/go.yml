@@ -4,13 +4,12 @@ on:
   push:
     paths:
       - "apitable.go/**"
-      - ".github/**"
+      - ".github/workflows/go.yml"
   pull_request:
     paths:
       - "apitable.go/**"
 
 jobs:
-
   unit_test:
     defaults:
       run:
@@ -19,22 +18,22 @@ jobs:
     runs-on: ubuntu-latest
     environment: api
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.15.2
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15.2
 
-    - name: Build
-      run: go build -v ./...
+      - name: Build
+        run: go build -v ./...
 
-    - name: Test
-      env:
-        DOMAIN: ${{ secrets.DOMAIN }}
-        TOKEN: ${{ secrets.TOKEN }}
-        SPACE_ID: ${{ secrets.SPACE_ID }}
-        DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
-        VIEW_ID: ${{ secrets.VIEW_ID }}
-        NUMBER_FIELD_NAME: ${{ secrets.NUMBER_FIELD_NAME }}
-      run: go test -v ./test/...
+      - name: Test
+        env:
+          DOMAIN: ${{ secrets.DOMAIN }}
+          TOKEN: ${{ secrets.TOKEN }}
+          SPACE_ID: ${{ secrets.SPACE_ID }}
+          DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
+          VIEW_ID: ${{ secrets.VIEW_ID }}
+          NUMBER_FIELD_NAME: ${{ secrets.NUMBER_FIELD_NAME }}
+        run: go test -v ./test/...

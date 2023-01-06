@@ -5,16 +5,15 @@ name: Node.js Auto Test
 
 on:
   push:
-    branches: [ "develop", "main" ]
     paths:
-      - 'apitable.js/**'
-      - '.github/workflows/js-codecov.yml'
+      - "apitable.js/**"
+      - ".github/workflows/js-codecov.yml"
     tags:
-      - 'apitable.js@'
+      - "apitable.js@"
   pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches: [ "**" ]
-    paths: 'apitable.js/**'
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
+    paths: "apitable.js/**"
 
 jobs:
   build:
@@ -51,10 +50,10 @@ jobs:
           DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
           FOLDER_ID: ${{ secrets.FOLDER_ID }}
           SPACE_ID: ${{ secrets.SPACE_ID }}
+          VIEW_ID: ${{ secrets.VIEW_ID }}
         run: |
           yarn
           yarn test:coverage
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov
-

@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "apitable.php/**"
-      - ".github/**"
+      - ".github/workflows/php-test.yml"
   pull_request:
     paths:
       - "apitable.php/**"
@@ -15,27 +15,26 @@ defaults:
     working-directory: apitable.php
 
 jobs:
-
   unit_test:
     runs-on: ubuntu-latest
     environment: api
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      uses: php-actions/composer@v6
-      with:
-        working_dir: apitable.php
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          working_dir: apitable.php
 
-    - name: Test
-      uses: php-actions/phpunit@v3
-      env:
-        DOMAIN: ${{ secrets.DOMAIN }}
-        TOKEN: ${{ secrets.TOKEN }}
-        SPACE_ID: ${{ secrets.SPACE_ID }}
-        DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
-        VIEW_ID: ${{ secrets.VIEW_ID }}
-        NUMBER_FIELD_NAME: ${{ secrets.NUMBER_FIELD_NAME }}
-      with:
-        bootstrap: apitable.php/vendor/autoload.php
-        configuration: apitable.php/test/phpunit.xml
+      - name: Test
+        uses: php-actions/phpunit@v3
+        env:
+          DOMAIN: ${{ secrets.DOMAIN }}
+          TOKEN: ${{ secrets.TOKEN }}
+          SPACE_ID: ${{ secrets.SPACE_ID }}
+          DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
+          VIEW_ID: ${{ secrets.VIEW_ID }}
+          NUMBER_FIELD_NAME: ${{ secrets.NUMBER_FIELD_NAME }}
+        with:
+          bootstrap: apitable.php/vendor/autoload.php
+          configuration: apitable.php/test/phpunit.xml
