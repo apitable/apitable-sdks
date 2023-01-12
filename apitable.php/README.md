@@ -9,7 +9,7 @@ php 7.0+
 ## Installation
 
 ```shell
-composer require ApiTable/ApiTable
+composer require apitable/sdk-php
 ```
 
 
