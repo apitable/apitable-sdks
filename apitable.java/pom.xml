@@ -574,12 +574,12 @@
     <distributionManagement>
         <!--ID must exist in file .m2/setting.xml. server ID-->
         <snapshotRepository>
-            <id>sonatype-snapshot</id>
+            <id>ossrh</id>
             <name>Nexus Snapshot Repository</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>sonatype-release</id>
+            <id>ossrh</id>
             <name>Nexus Release Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
