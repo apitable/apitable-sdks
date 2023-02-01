@@ -574,7 +574,7 @@
     <distributionManagement>
         <!--ID must exist in file .m2/setting.xml. server ID-->
         <snapshotRepository>
-            <id>ossrh</id>
+            <id>sonatype-nexus-snapshots</id>
             <name>Nexus Snapshot Repository</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
