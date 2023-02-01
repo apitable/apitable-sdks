@@ -16,16 +16,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Maven Central Repository
-        uses: actions/setup-java@v3
+      - name: Set up Maven Central Repo
+        uses: actions/setup-java@v1
         with:
           java-version: 8
-          distribution: 'adopt'
-          server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_PASSWORD
-      - name: Publish package
-        run: mvn --batch-mode deploy
+          server-id: sonatype-nexus-staging
+          server-username: ${{ secrets.SONATYPE_USERNAME }}
+          server-password: ${{ secrets.SONATYPE_PASSWORD }}
+          gpg-passphrase: ${{ secrets.GPG_PASSWORD }}
+      - name: Publish to Maven Central Rep
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          gpg_private_key: ${{ secrets.GPG_SECRET }}
+          gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
+          nexus_username: ${{ secrets.SONATYPE_USERNAME}}
+          nexus_password: ${{ secrets.SONATYPE_PASSWORD }}
         env:
           MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
