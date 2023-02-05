@@ -24,6 +24,11 @@ jobs:
           server-username: ${{ secrets.SONATYPE_USERNAME }}
           server-password: ${{ secrets.SONATYPE_PASSWORD }}
           gpg-passphrase: ${{ secrets.GPG_PASSWORD }}
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v1
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_SECRET }}
+          PASSPHRASE: ${{ secrets.GPG_PASSWORD }}
       - name: Publish to Maven Central Rep
         uses: samuelmeuli/action-maven-publish@v1
         with:
