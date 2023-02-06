@@ -24,6 +24,8 @@ jobs:
           java-version: 8
 
       - name: Release Maven package
+        run: |
+          cd apitable.java
         uses: samuelmeuli/action-maven-publish@v1
         with:
           gpg_private_key: ${{ secrets.GPG_SECRET }}
