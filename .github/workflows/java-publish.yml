@@ -18,20 +18,14 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
-      - name: Set up Maven Central Repo
+      - name: Install Java and Maven
         uses: actions/setup-java@v1
         with:
           java-version: 8
-          server-id: sonatype-nexus-staging
-          server-username: ${{ secrets.SONATYPE_USERNAME }}
-          server-password: ${{ secrets.SONATYPE_PASSWORD }}
-          gpg-passphrase: ${{ secrets.GPG_PASSWORD }}
 
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
-          maven_profiles: 'release-ossrh'
-          maven_args: '-DskipTests'
           gpg_private_key: ${{ secrets.GPG_SECRET }}
           gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
           nexus_username: ${{ secrets.SONATYPE_USERNAME }}
