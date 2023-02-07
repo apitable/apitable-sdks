@@ -23,13 +23,10 @@ jobs:
         with:
           java-version: 8
 
-      - name: Install gpg secret key
-        run: |
-          cat <(echo -e "${{ secrets.GPG_SECRET }}") | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
-
-      - name: Publish package
-        env:
-          MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }} clean deploy
+      - name: Release Maven package
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          gpg_private_key: ${{ secrets.GPG_SECRET }}
+          gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
+          nexus_username: ${{ secrets.SONATYPE_USERNAME }}
+          nexus_password: ${{ secrets.SONATYPE_PASSWORD }}
