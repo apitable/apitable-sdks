@@ -26,13 +26,13 @@
     <servers>
         <server>
             <id>sonatype-snapshot</id>
-            <username>${env.nexus_username}</username>
-            <password>${env.nexus_password}</password>
+            <username>vikadata</username>
+            <password>j-6K.Hf.guL56aV</password>
         </server>
         <server>
             <id>sonatype-release</id>
-            <username>${env.nexus_username}</username>
-            <password>${env.nexus_password}</password>
+            <username>vikadata</username>
+            <password>j-6K.Hf.guL56aV</password>
         </server>
     </servers>
 </settings>
