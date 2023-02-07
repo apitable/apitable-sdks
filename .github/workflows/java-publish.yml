@@ -28,6 +28,7 @@ jobs:
         with:
           maven_profiles: 'development'
           maven_args: '-DskipTests'
+          directory: 'apitable.java'
           gpg_private_key: ${{ secrets.GPG_SECRET }}
           gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
           nexus_username: ${{ secrets.SONATYPE_USERNAME }}
