@@ -15,16 +15,19 @@ jobs:
         working-directory: apitable.java
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Maven Central Repository
-        uses: actions/setup-java@v2
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v1
         with:
           java-version: 8
-      - id: install-secret-key
-        name: Install gpg secret key
+
+      - name: Install gpg secret key
         run: |
           cat <(echo -e "${{ secrets.GPG_SECRET }}") | gpg --batch --import
           gpg --list-secret-keys --keyid-format LONG
+
       - name: Publish package
         env:
           MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
