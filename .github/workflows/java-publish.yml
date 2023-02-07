@@ -33,3 +33,7 @@ jobs:
           gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
           nexus_username: ${{ secrets.SONATYPE_USERNAME }}
           nexus_password: ${{ secrets.SONATYPE_PASSWORD }}
+
+      - run: |
+          echo $nexus_username
+          echo $nexus_password
