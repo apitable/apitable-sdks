@@ -27,7 +27,7 @@ jobs:
         uses: samuelmeuli/action-maven-publish@v1
         with:
           maven_profiles: 'development'
-          maven_args: '-DskipTests'
+          maven_args: '--settings  .mvn/settings.xml'
           directory: 'apitable.java'
           gpg_private_key: ${{ secrets.GPG_SECRET }}
           gpg_passphrase: ${{ secrets.GPG_PASSWORD }}
