@@ -23,6 +23,9 @@ jobs:
         with:
           java-version: 8
 
+      - run: |
+          cd apitable.java
+
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
