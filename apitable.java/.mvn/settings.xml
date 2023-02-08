@@ -38,11 +38,11 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <gpg.executable>gpg2</gpg.executable>
+                <gpg.executable>gpg</gpg.executable>
                 <!--suppress UnresolvedMavenProperty -->
-                <gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
+                <gpg.keyname>B14D9177B7817BD2CF892BB7258F4C9B7E33669E</gpg.keyname>
                 <!--suppress UnresolvedMavenProperty -->
-                <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+                <gpg.passphrase>lzj+0728</gpg.passphrase>
             </properties>
         </profile>
     </profiles>
