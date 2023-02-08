@@ -12,7 +12,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: apitable.java
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +21,9 @@ jobs:
           java-version: 8
           distribution: zulu
       - name: Deploy to Sonatype
-        run: sudo ./mvnw deploy -DskipTests -B --settings .mvn/settings.xml -Dlicense.skip=true
+        run: |
+          cd apitable.java
+          sudo ./mvnw deploy -DskipTests -B --settings .mvn/settings.xml -Dlicense.skip=true
         env:
           MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
