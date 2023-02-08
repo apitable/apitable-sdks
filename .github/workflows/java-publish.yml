@@ -26,8 +26,7 @@ jobs:
           cat <(echo -e "${{ secrets.GPG_SECRET }}") | gpg --batch --import
           gpg --list-secret-keys --keyid-format LONG
       - name: Deploy to Sonatype
-        run: ./mvnw deploy -Prelease -DskipTests -B --settings .mvn/settings.xml -Dgpg.executable=gpg2 -Dgpg.keyname=${{ secrets.GPG_SECRET }} -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }}
-
+        run: ./mvnw deploy -Prelease -DskipTests -B --settings .mvn/settings.xml
         env:
           MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
