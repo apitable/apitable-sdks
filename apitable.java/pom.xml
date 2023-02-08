@@ -203,6 +203,7 @@
     </dependencyManagement>
 
     <build>
+        <defaultGoal>compile</defaultGoal>
         <!--Plugin Dependencies-->
         <plugins>
             <plugin>
