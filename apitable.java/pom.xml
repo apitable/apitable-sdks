@@ -460,9 +460,9 @@
                 <!--using local variable-->
                 <gpg.executable>gpg2</gpg.executable>
                 <!--suppress UnresolvedMavenProperty -->
-                <gpg.keyname>${GPG_KEY_NAME}</gpg.keyname>
+                <gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
                 <!--suppress UnresolvedMavenProperty -->
-                <gpg.passphrase>${GPG_PASSPHRASE}</gpg.passphrase>
+                <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
             </properties>
             <build>
                 <plugins>
