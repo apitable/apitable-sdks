@@ -21,6 +21,10 @@ jobs:
         with:
           java-version: 8
           distribution: zulu
+      - name: Install gpg secret key
+        run: |
+          cat <(echo -e "${{ secrets.GPG_SECRET }}") | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
       - name: Deploy to Sonatype
         run: ./mvnw deploy -DskipTests -B --settings .mvn/settings.xml -Dlicense.skip=true -Dgpg.keyname=${{ secrets.GPG_SECRET }} -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }}
         env:
