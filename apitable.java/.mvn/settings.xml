@@ -38,7 +38,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <gpg.executable>gpg</gpg.executable>
+                <gpg.executable>gpg2</gpg.executable>
                 <!--suppress UnresolvedMavenProperty -->
                 <gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
                 <!--suppress UnresolvedMavenProperty -->
