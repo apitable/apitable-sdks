@@ -32,4 +32,4 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-        run: mvn clean deploy -Prelease --settings .mvn/settings.xml -Dgpg.keyname=${{ GPG_SECRET }} -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }}
+        run: mvn clean deploy -Prelease --settings .mvn/settings.xml -Dgpg.keyname=${{ secrets.GPG_SECRET }} -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }}
