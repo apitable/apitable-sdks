@@ -458,7 +458,7 @@
             <properties>
                 <maven.test.skip>true</maven.test.skip>
                 <!--using local variable-->
-                <gpg.executable>gpg</gpg.executable>
+                <gpg.executable>gpg2</gpg.executable>
                 <!--suppress UnresolvedMavenProperty -->
                 <gpg.keyname>${GPG_KEY_NAME}</gpg.keyname>
                 <!--suppress UnresolvedMavenProperty -->
