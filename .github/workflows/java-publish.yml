@@ -15,21 +15,13 @@ jobs:
         working-directory: apitable.java
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Install Java and Maven
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
           java-version: 8
-
-      - name: Install gpg secret key
-        run: |
-          cat <(echo -e "${{ secrets.GPG_SECRET }}") | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
-
-      - name: Publish package
+      - name: Deploy to Sonatype
+        run: ./mvnw deploy -DskipTests -B --settings .mvn/settings.xml -Dlicense.skip=true
         env:
           MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-        run: ./mvnw clean deploy -Prelease --settings .mvn/settings.xml -Dgpg.executable=gpg2 -Dgpg.keyname=${{ secrets.GPG_SECRET }} -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }}
