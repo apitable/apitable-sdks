@@ -46,11 +46,6 @@
         <jmimemagic.version>0.1.5</jmimemagic.version>
         <assertj.version>3.19.0</assertj.version>
         <junit.version>5.7.0</junit.version>
-        <gpg.executable>gpg</gpg.executable>
-        <!--suppress UnresolvedMavenProperty -->
-        <gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
-        <!--suppress UnresolvedMavenProperty -->
-        <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
     </properties>
 
     <modules>
@@ -646,12 +641,12 @@
     <distributionManagement>
         <!--ID must exist in file .m2/setting.xml. server ID-->
         <snapshotRepository>
-            <id>sonatype-snapshot</id>
+            <id>ossrh</id>
             <name>Nexus Snapshot Repository</name>
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>sonatype-release</id>
+            <id>ossrh</id>
             <name>Nexus Release Repository</name>
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
