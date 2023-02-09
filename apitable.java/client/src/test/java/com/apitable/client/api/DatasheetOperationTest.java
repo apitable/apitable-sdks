@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.apitable.client.api.http.ApiCredential;
-import com.apitable.client.api.model.CreateDatasheetRequest;
-import com.apitable.client.api.model.CreateDatasheetResponse;
-import com.apitable.client.api.model.CreateFieldRequest;
+import com.apitable.client.api.model.*;
 import com.apitable.client.api.model.builder.CreateFieldRequestBuilder;
 import com.apitable.client.api.model.field.FieldTypeEnum;
 import com.apitable.client.api.model.field.property.EmptyProperty;
@@ -24,6 +22,10 @@ public class DatasheetOperationTest {
     private final String HOST_URL = "https://"+DOMAIN;
 
     private final String API_KEY = System.getenv("TOKEN");
+
+    private final String DATASHEET_ID = System.getenv("DATASHEET_ID");
+
+    private final String VIEW_ID = System.getenv("VIEW_ID");
 
     private final ApitableApiClient apitableApiClient = new ApitableApiClient(HOST_URL, new ApiCredential(API_KEY));
 
@@ -63,6 +65,43 @@ public class DatasheetOperationTest {
         CreateDatasheetResponse response = apitableApiClient.getDatasheetApi().addDatasheet(SPACE_ID, request);
         assertThat(response).isNotNull();
         assertThat(response.getId()).isNotNull();
+    }
+
+    @Test
+    void testCreateEmbedLink(){
+        CreateEmbedLinkRequest request = new CreateEmbedLinkRequest();
+        EmbedLinkPayloadViewControl viewControl = new EmbedLinkPayloadViewControl();
+        viewControl.setViewId(VIEW_ID);
+        EmbedLinkPayload embedLinkPayload = new EmbedLinkPayload();
+        embedLinkPayload.setViewControl(viewControl);
+        request.setPayload(embedLinkPayload);
+        request.setTheme(EmbedLinkThemeEnum.light);
+        CreateEmbedLinkResponse response = apitableApiClient.getDatasheetApi().addEmbedLink(SPACE_ID, DATASHEET_ID, request);
+        assertThat(response).isNotNull();
+        assertThat(response.getLinkId()).isNotNull();
+    }
+
+    @Test
+    void testGetEmbedLink(){
+        List<GetEmbedLinkResponse> responses = apitableApiClient.getDatasheetApi().getEmbedLink(SPACE_ID, DATASHEET_ID);
+        assertThat(responses).isNotNull();
+        assertThat(responses.get(0).getLinkId()).isNotNull();
+    }
+
+    @Test
+    void testDeleteEmbedLink() throws InterruptedException {
+        CreateEmbedLinkRequest request = new CreateEmbedLinkRequest();
+        EmbedLinkPayloadViewControl viewControl = new EmbedLinkPayloadViewControl();
+        viewControl.setViewId(VIEW_ID);
+        EmbedLinkPayload embedLinkPayload = new EmbedLinkPayload();
+        embedLinkPayload.setViewControl(viewControl);
+        request.setPayload(embedLinkPayload);
+        request.setTheme(EmbedLinkThemeEnum.light);
+        CreateEmbedLinkResponse response = apitableApiClient.getDatasheetApi().addEmbedLink(SPACE_ID, DATASHEET_ID, request);
+        assertThat(response).isNotNull();
+        assertThat(response.getLinkId()).isNotNull();
+        Thread.sleep(1000);
+        apitableApiClient.getDatasheetApi().deleteEmbedLink(SPACE_ID, DATASHEET_ID, response.getLinkId());
     }
 
 }
