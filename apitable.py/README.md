@@ -284,9 +284,3 @@ pipenv install --pre
 pipenv shell
 python -m unittest test
 ```
-
-# Related projects
-
-- [JavaScript SDK](https://github.com/apitable/apitable.js)
-- [Golang SDK](https://github.com/apitable/apitable.go)
-- [Java SDK](https://github.com/apitable/apitable.java)
