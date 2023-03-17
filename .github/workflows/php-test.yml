@@ -6,8 +6,9 @@ on:
       - "apitable.php/**"
       - ".github/workflows/php-test.yml"
   pull_request:
-    paths:
-      - "apitable.php/**"
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
+    paths: "apitable.php/**"
 
 defaults:
   run:

@@ -2,10 +2,10 @@ name: Java Publish Package
 
 on:
   release:
-    paths: 'apitable.java/.version'
+    paths: "apitable.java/.version"
     types: [created]
     tags:
-      - 'apitable.java@'
+      - "apitable.java@"
 
 jobs:
   publish:

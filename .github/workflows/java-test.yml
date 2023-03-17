@@ -6,8 +6,9 @@ on:
       - "apitable.java/**"
       - ".github/workflows/java-test.yml"
   pull_request:
-    paths:
-      - "apitable.java/**"
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
+    paths: "apitable.java/**"
 
 defaults:
   run:

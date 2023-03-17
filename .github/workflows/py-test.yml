@@ -5,8 +5,10 @@ on:
     paths:
       - "apitable.py/**"
       - ".github/workflows/py-test.yml"
-    pull_request:
-      paths: "apitable.py/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
+    paths: "apitable.py/**"
 
 jobs:
   unit_test:
