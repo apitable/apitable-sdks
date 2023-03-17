@@ -8,6 +8,8 @@ on:
     paths:
       - "apitable.js/**"
       - ".github/workflows/js-codecov.yml"
+    tags:
+      - "apitable.js@"
   pull_request:
     types: [opened, synchronize, reopened]
     branches: ["**"]

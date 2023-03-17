@@ -5,6 +5,8 @@ on:
     paths:
       - "apitable.py/**"
       - ".github/workflows/py-test.yml"
+    tags:
+      - "apitable.py@"
   pull_request:
     types: [opened, synchronize, reopened]
     branches: ["**"]
@@ -34,8 +36,8 @@ jobs:
         env:
           DOMAIN: ${{secrets.DOMAIN}}
           TOKEN: ${{secrets.TOKEN}}
-          PYTHON_DATASHEET_ID: ${{secrets.PYTHON_DATASHEET_ID}}
-          PYTHON_VIEW_ID: ${{secrets.PYTHON_VIEW_ID}}
+          DATASHEET_ID: ${{secrets.PYTHON_DATASHEET_ID}}
+          VIEW_ID: ${{secrets.PYTHON_VIEW_ID}}
           SPACE_ID: ${{secrets.SPACE_ID}}
           FOLDER_ID: ${{secrets.FOLDER_ID}}
         run: |

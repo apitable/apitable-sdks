@@ -25,6 +25,10 @@ public class DatasheetOperationTest {
 
     private final String DATASHEET_ID = System.getenv("DATASHEET_ID");
 
+    private final String LINKED_DATASHEET_ID = System.getenv("LINKED_DATASHEET_ID");
+
+    private final String LINKED_VIEW_ID = System.getenv("LINKED_VIEW_ID");
+
     private final String VIEW_ID = System.getenv("VIEW_ID");
 
     private final ApitableApiClient apitableApiClient = new ApitableApiClient(HOST_URL, new ApiCredential(API_KEY));

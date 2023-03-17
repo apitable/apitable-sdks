@@ -6,6 +6,10 @@ public abstract class AbstractBaseTest {
 
     protected final String DATASHEET_ID = System.getenv("DATASHEET_ID");
 
+    protected final String LINKED_DATASHEET_ID = System.getenv("LINKED_DATASHEET_ID");
+
+    private final String LINKED_VIEW_ID = System.getenv("LINKED_VIEW_ID");
+
     private final String DOMAIN = System.getenv("DOMAIN");
 
     private final String HOST_URL = "https://"+DOMAIN;

@@ -5,6 +5,8 @@ on:
     paths:
       - "apitable.java/**"
       - ".github/workflows/java-test.yml"
+    tags:
+      - "apitable.java@"
   pull_request:
     types: [opened, synchronize, reopened]
     branches: ["**"]
@@ -37,6 +39,8 @@ jobs:
           DOMAIN: ${{ secrets.DOMAIN }}
           TOKEN: ${{ secrets.JAVA_TOKEN }}
           SPACE_ID: ${{ secrets.SPACE_ID }}
-          DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
-          VIEW_ID: ${{ secrets.VIEW_ID }}
+          DATASHEET_ID: ${{ secrets.JAVA_DATASHEET_ID }}
+          LINKED_DATASHEET_ID: ${{ secrets.JAVA_LINKED_DATASHEET_ID }}
+          VIEW_ID: ${{ secrets.JAVA_VIEW_ID }}
+          LINKED_VIEW_ID: ${{ secrets.JAVA_LINKED_VIEW_ID }}
         run: mvn --batch-mode test -Dmaven.test.skip=false
