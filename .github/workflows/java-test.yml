@@ -37,7 +37,7 @@ jobs:
       - name: Test
         env:
           DOMAIN: ${{ secrets.DOMAIN }}
-          TOKEN: ${{ secrets.JAVA_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
           SPACE_ID: ${{ secrets.SPACE_ID }}
           DATASHEET_ID: ${{ secrets.JAVA_DATASHEET_ID }}
           FOLDER_ID: ${{ secrets.FOLDER_ID }}

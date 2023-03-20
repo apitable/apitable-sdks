@@ -16,7 +16,7 @@ final class RecordTest extends TestCase
                 'fields' => [getenv('NUMBER_FIELD_NAME') => 99],
             ]
         ]);
-        error_log("RecordTest::testAdd: " . json_encode($all));
+        var_dump("RecordTest::testAdd: " . json_encode($all));
         self::assertSame(200, $all->getCode());
     }
 
