@@ -103,5 +103,4 @@ public class DatasheetOperationTest {
         Thread.sleep(1000);
         apitableApiClient.getDatasheetApi().deleteEmbedLink(SPACE_ID, DATASHEET_ID, response.getLinkId());
     }
-
 }
