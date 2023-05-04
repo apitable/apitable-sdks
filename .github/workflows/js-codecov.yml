@@ -4,6 +4,7 @@
 name: Node.js Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.js/**"
@@ -16,7 +17,7 @@ on:
     paths: "apitable.js/**"
 
 jobs:
-  build:
+  unit_test:
     defaults:
       run:
         shell: bash

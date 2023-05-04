@@ -1,13 +1,17 @@
 name: PHP Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.php/**"
       - ".github/workflows/php-test.yml"
+    tags:
+      - "apitable.php@"
   pull_request:
-    paths:
-      - "apitable.php/**"
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
+    paths: "apitable.php/**"
 
 defaults:
   run:

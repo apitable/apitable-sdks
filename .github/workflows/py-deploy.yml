@@ -2,33 +2,31 @@ name: Python Publish Package
 
 on:
   release:
-    paths: 'apitable.py/.version'
-    types: [ created ]
+    paths: "apitable.py/.version"
+    types: [created]
     tags:
-      - 'apitable.py@'
+      - "apitable.py@"
 
 jobs:
-  deploy:
-
+  publish:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.7'
-    - name: Install dependencies
-      run: |
-        cd apitable.py
-        python -m pip install --upgrade pip
-        pip install setuptools wheel
-        pip install -r requirements.txt
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      run: |
-        cd apitable.py
-        python setup.py sdist bdist_wheel
-        pipx run twine upload dist/*
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.7"
+      - name: Install dependencies
+        run: |
+          cd apitable.py
+          python -m pip install --upgrade pip
+          pip install setuptools wheel
+          pip install -r requirements.txt
+      - name: Build and publish
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          cd apitable.py
+          python setup.py sdist bdist_wheel
+          pipx run twine upload dist/*

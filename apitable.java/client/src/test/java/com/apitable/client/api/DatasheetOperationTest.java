@@ -25,6 +25,12 @@ public class DatasheetOperationTest {
 
     private final String DATASHEET_ID = System.getenv("DATASHEET_ID");
 
+    private final String LINKED_DATASHEET_ID = System.getenv("LINKED_DATASHEET_ID");
+
+    private final String FOLDER_ID = System.getenv("FOLDER_ID");
+
+    private final String LINKED_VIEW_ID = System.getenv("LINKED_VIEW_ID");
+
     private final String VIEW_ID = System.getenv("VIEW_ID");
 
     private final ApitableApiClient apitableApiClient = new ApitableApiClient(HOST_URL, new ApiCredential(API_KEY));
@@ -43,7 +49,7 @@ public class DatasheetOperationTest {
         CreateDatasheetRequest request = new CreateDatasheetRequest();
         request.setName("datasheetWithOtherInfo");
         request.setDescription("description");
-        request.setFolderId("fodWGD6LirjMM");
+        request.setFolderId(FOLDER_ID);
         SingleTextFieldProperty property = new SingleTextFieldProperty();
         property.setDefaultValue("default");
         CreateFieldRequest<SingleTextFieldProperty> singleSelectField = CreateFieldRequestBuilder
