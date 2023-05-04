@@ -1,13 +1,19 @@
 name: Go Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.go/**"
       - ".github/workflows/go.yml"
+    tags:
+      - "apitable.go@"
   pull_request:
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
     paths:
       - "apitable.go/**"
+      - ".github/workflows/go.yml"
 
 jobs:
   unit_test:

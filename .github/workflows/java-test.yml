@@ -1,13 +1,19 @@
 name: Java Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.java/**"
       - ".github/workflows/java-test.yml"
+    tags:
+      - "apitable.java@"
   pull_request:
+    types: [opened, synchronize, reopened]
+    branches: ["**"]
     paths:
       - "apitable.java/**"
+      - ".github/workflows/java-test.yml"
 
 defaults:
   run:
@@ -34,8 +40,11 @@ jobs:
       - name: Test
         env:
           DOMAIN: ${{ secrets.DOMAIN }}
-          TOKEN: ${{ secrets.JAVA_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
           SPACE_ID: ${{ secrets.SPACE_ID }}
-          DATASHEET_ID: ${{ secrets.DATASHEET_ID }}
-          VIEW_ID: ${{ secrets.VIEW_ID }}
+          DATASHEET_ID: ${{ secrets.JAVA_DATASHEET_ID }}
+          FOLDER_ID: ${{ secrets.FOLDER_ID }}
+          LINKED_DATASHEET_ID: ${{ secrets.JAVA_LINKED_DATASHEET_ID }}
+          VIEW_ID: ${{ secrets.JAVA_VIEW_ID }}
+          LINKED_VIEW_ID: ${{ secrets.JAVA_LINKED_VIEW_ID }}
         run: mvn --batch-mode test -Dmaven.test.skip=false

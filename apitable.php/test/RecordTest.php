@@ -16,6 +16,7 @@ final class RecordTest extends TestCase
                 'fields' => [getenv('NUMBER_FIELD_NAME') => 99],
             ]
         ]);
+        var_dump("RecordTest::testAdd: " . strval($all->getCode()));
         self::assertSame(200, $all->getCode());
     }
 
@@ -25,6 +26,7 @@ final class RecordTest extends TestCase
         $all = ApiTable::datasheet(getenv('DATASHEET_ID'))::record()->all([
             "fieldKey" => 'id'
         ]);
+        error_log("RecordTest::testAll: " . strval($all->getCode()));
         self::assertSame(200, $all->getCode());
     }
 
@@ -34,6 +36,7 @@ final class RecordTest extends TestCase
         $all = ApiTable::datasheet(getenv('DATASHEET_ID'))::record()->get([
             "fieldKey" => 'id'
         ]);
+        error_log("RecordTest::testGet: " . strval($all->getCode()));
         self::assertSame(200, $all->getCode());
     }
 
@@ -55,6 +58,7 @@ final class RecordTest extends TestCase
                 'fields' => [getenv('NUMBER_FIELD_NAME') => 99],
             ]
         ]);
+        error_log("RecordTest::testUpdate: " . strval($result->getCode()));
         self::assertSame(200, $result->getCode());
     }
 
@@ -69,6 +73,7 @@ final class RecordTest extends TestCase
         $result = ApiTable::datasheet(getenv('DATASHEET_ID'))::record()->del([
             $all->getData()->getRecords()[0]['recordId'], $all->getData()->getRecords()[1]['recordId']
         ]);
+        error_log("RecordTest::testDel: " . strval($result->getCode()));
         self::assertSame(200, $result->getCode());
     }
 }
