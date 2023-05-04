@@ -11,7 +11,7 @@ on:
       - "apitable.js@"
 
 jobs:
-  build:
+  publish:
     defaults:
       run:
         shell: bash

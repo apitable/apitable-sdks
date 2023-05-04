@@ -50,6 +50,10 @@ public class FieldAddOperationTest {
 
     private final String DATASHEET_ID = System.getenv("DATASHEET_ID");
 
+    private final String LINKED_DATASHEET_ID = System.getenv("LINKED_DATASHEET_ID");
+
+    private final String LINKED_VIEW_ID = System.getenv("LINKED_VIEW_ID");
+
     private final String DOMAIN = System.getenv("DOMAIN");
 
     private final String HOST_URL = "https://"+DOMAIN;
@@ -428,7 +432,7 @@ public class FieldAddOperationTest {
     void testCreateMagicLinkField() {
         FieldApi fieldApi = apitableApiClient.getFieldApi();
         MagicLinkFieldProperty property = new MagicLinkFieldProperty();
-        property.setForeignDatasheetId("dst0k3JkQCMHvAEilW");
+        property.setForeignDatasheetId(LINKED_DATASHEET_ID);
         CreateFieldRequest<MagicLinkFieldProperty> request = CreateFieldRequestBuilder
                 .create()
                 .ofType(FieldTypeEnum.MagicLink)
@@ -444,8 +448,8 @@ public class FieldAddOperationTest {
     void testCreateMagicLinkFieldWithOtherInfo() {
         FieldApi fieldApi = apitableApiClient.getFieldApi();
         MagicLinkFieldProperty property = new MagicLinkFieldProperty();
-        property.setForeignDatasheetId("dst0k3JkQCMHvAEilW");
-        property.setLimitToViewId("viwUQiknmXemJ");
+        property.setForeignDatasheetId(LINKED_DATASHEET_ID);
+        property.setLimitToViewId(LINKED_VIEW_ID);
         property.setLimitSingleRecord(true);
         CreateFieldRequest<MagicLinkFieldProperty> request = CreateFieldRequestBuilder
                 .create()
