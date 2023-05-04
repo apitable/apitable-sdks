@@ -9,7 +9,7 @@ on:
     tags:
       - "apitable.py@"
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, closed]
     branches: ["**"]
     paths:
       - "apitable.py/**"

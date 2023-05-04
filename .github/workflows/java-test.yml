@@ -1,7 +1,6 @@
 name: Java Auto Test
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - "apitable.java/**"
@@ -9,11 +8,12 @@ on:
     tags:
       - "apitable.java@"
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, closed]
     branches: ["**"]
     paths:
       - "apitable.java/**"
       - ".github/workflows/java-test.yml"
+  workflow_dispatch:
 
 defaults:
   run:
