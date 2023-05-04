@@ -11,7 +11,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches: ["**"]
-    paths: "apitable.php/**"
+    paths:
+      - "apitable.php/**"
+      - ".github/workflows/php-test.yml"
 
 defaults:
   run:

@@ -11,7 +11,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches: ["**"]
-    paths: "apitable.go/**"
+    paths:
+      - "apitable.go/**"
+      - ".github/workflows/go.yml"
 
 jobs:
   unit_test:
