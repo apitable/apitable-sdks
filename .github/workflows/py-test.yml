@@ -1,7 +1,6 @@
 name: Python Auto Test
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - "apitable.py/**"
@@ -14,6 +13,7 @@ on:
     paths:
       - "apitable.py/**"
       - ".github/workflows/py-test.yml"
+  workflow_dispatch:
 
 jobs:
   unit_test:

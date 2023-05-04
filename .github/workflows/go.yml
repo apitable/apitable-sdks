@@ -1,7 +1,6 @@
 name: Go Auto Test
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - "apitable.go/**"
@@ -14,6 +13,7 @@ on:
     paths:
       - "apitable.go/**"
       - ".github/workflows/go.yml"
+  workflow_dispatch:
 
 jobs:
   unit_test:

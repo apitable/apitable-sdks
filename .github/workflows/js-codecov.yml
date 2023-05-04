@@ -4,7 +4,6 @@
 name: Node.js Auto Test
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - "apitable.js/**"
@@ -17,6 +16,7 @@ on:
     paths:
       - "apitable.js/**"
       - ".github/workflows/js-codecov.yml"
+  workflow_dispatch:
 
 jobs:
   unit_test:

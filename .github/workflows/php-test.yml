@@ -1,7 +1,6 @@
 name: PHP Auto Test
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - "apitable.php/**"
@@ -14,6 +13,7 @@ on:
     paths:
       - "apitable.php/**"
       - ".github/workflows/php-test.yml"
+  workflow_dispatch:
 
 defaults:
   run:
