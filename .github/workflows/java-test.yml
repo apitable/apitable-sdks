@@ -1,6 +1,7 @@
 name: Java Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.java/**"

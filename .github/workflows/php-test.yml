@@ -1,6 +1,7 @@
 name: PHP Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.php/**"
