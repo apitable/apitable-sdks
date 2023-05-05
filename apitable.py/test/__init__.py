@@ -1,7 +1,7 @@
 from .env import SPACE_ID, FOLDER_ID, DATASHEET_ID, VIEW_ID, TOKEN, DOMAIN
 from .test_create_datasheet import TestCreateDatasheet
 from .test_create_embed_link import TestEmbedLinkCRD
-from .test_create_field import TestCreateField
+from .test_create_field import TestCreateFields
 from .test_create_records import TestCreateRecords
 from .test_delete_field import TestDeleteFields
 from .test_delete_records import TestDeleteRecords
