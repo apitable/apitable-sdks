@@ -6,8 +6,6 @@ on:
     paths:
       - "apitable.py/**"
       - ".github/workflows/py-test.yml"
-    tags:
-      - "apitable.py@"
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches: ["**"]

@@ -5,8 +5,6 @@ on:
     paths:
       - "apitable.go/**"
       - ".github/workflows/go.yml"
-    tags:
-      - "apitable.go@"
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches: ["**"]
