@@ -255,22 +255,22 @@ public class FieldAddOperationTest {
         cacheFieldId = response.getId();
     }
 
-//    @Test
-//    void testCreatePercentFieldWithOtherInfo() {
-//        FieldApi fieldApi = apitableApiClient.getFieldApi();
-//        PercentFieldProperty property = new PercentFieldProperty();
-//        property.setPrecision(PrecisionEnum.POINT0);
-//        property.setDefaultValue("1");
-//        CreateFieldRequest<PercentFieldProperty> request = CreateFieldRequestBuilder
-//                .create()
-//                .ofType(FieldTypeEnum.Percent)
-//                .withName("percentWithOtherInfo")
-//                .withProperty(property)
-//                .build();
-//        CreateFieldResponse response = fieldApi.addField(SPACE_ID, DATASHEET_ID, request);
-//        assertThat(response.getName()).isEqualTo("percentWithOtherInfo");
-//        cacheFieldId = response.getId();
-//    }
+    @Test
+    void testCreatePercentFieldWithOtherInfo() {
+        FieldApi fieldApi = apitableApiClient.getFieldApi();
+        PercentFieldProperty property = new PercentFieldProperty();
+        property.setPrecision(PrecisionEnum.POINT0);
+        property.setDefaultValue("1");
+        CreateFieldRequest<PercentFieldProperty> request = CreateFieldRequestBuilder
+                .create()
+                .ofType(FieldTypeEnum.Percent)
+                .withName("percentWithOtherInfo")
+                .withProperty(property)
+                .build();
+        CreateFieldResponse response = fieldApi.addField(SPACE_ID, DATASHEET_ID, request);
+        assertThat(response.getName()).isEqualTo("percentWithOtherInfo");
+        cacheFieldId = response.getId();
+    }
 
     @Test
     void testCreateDateTimeFieldWithOtherInfo() {
@@ -336,22 +336,22 @@ public class FieldAddOperationTest {
         cacheFieldId = response.getId();
     }
 
-//    @Test
-//    void testCreateMemberFieldWithOtherInfo() {
-//        FieldApi fieldApi = apitableApiClient.getFieldApi();
-//        MemberFieldProperty property = new MemberFieldProperty();
-//        property.setMulti(false);
-//        property.setShouldSendMsg(false);
-//        CreateFieldRequest<MemberFieldProperty> request = CreateFieldRequestBuilder
-//                .create()
-//                .ofType(FieldTypeEnum.Member)
-//                .withName("memberWithOtherInfo")
-//                .withProperty(property)
-//                .build();
-//        CreateFieldResponse response = fieldApi.addField(SPACE_ID, DATASHEET_ID, request);
-//        assertThat(response.getName()).isEqualTo("memberWithOtherInfo");
-//        cacheFieldId = response.getId();
-//    }
+    @Test
+    void testCreateMemberFieldWithOtherInfo() {
+        FieldApi fieldApi = apitableApiClient.getFieldApi();
+        MemberFieldProperty property = new MemberFieldProperty();
+        property.setMulti(false);
+        property.setShouldSendMsg(false);
+        CreateFieldRequest<MemberFieldProperty> request = CreateFieldRequestBuilder
+                .create()
+                .ofType(FieldTypeEnum.Member)
+                .withName("memberWithOtherInfo")
+                .withProperty(property)
+                .build();
+        CreateFieldResponse response = fieldApi.addField(SPACE_ID, DATASHEET_ID, request);
+        assertThat(response.getName()).isEqualTo("memberWithOtherInfo");
+        cacheFieldId = response.getId();
+    }
 
     @Test
     void testCreateCheckboxField() {

@@ -44,15 +44,15 @@ public class DatasheetOperationTest {
         assertThat(response.getId()).isNotNull();
     }
 
-//    @Test
-//    void testAddDatasheetInFolder() {
-//        CreateDatasheetRequest request = new CreateDatasheetRequest();
-//        request.setName("datasheetInFolder");
-//        request.setFolderId(FOLDER_ID);
-//        CreateDatasheetResponse response = apitableApiClient.getDatasheetApi().addDatasheet(SPACE_ID, request);
-//        assertThat(response).isNotNull();
-//        assertThat(response.getId()).isNotNull();
-//    }
+    @Test
+    void testAddDatasheetInFolder() {
+        CreateDatasheetRequest request = new CreateDatasheetRequest();
+        request.setName("datasheetInFolder");
+        request.setFolderId(FOLDER_ID);
+        CreateDatasheetResponse response = apitableApiClient.getDatasheetApi().addDatasheet(SPACE_ID, request);
+        assertThat(response).isNotNull();
+        assertThat(response.getId()).isNotNull();
+    }
 
     @Test
     void testAddDatasheetWithOtherInfo() {
