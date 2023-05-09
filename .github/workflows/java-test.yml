@@ -1,14 +1,13 @@
 name: Java Auto Test
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "apitable.java/**"
       - ".github/workflows/java-test.yml"
-    branches:
-      - "**"
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, closed]
     branches: ["**"]
     paths:
       - "apitable.java/**"
@@ -23,7 +22,6 @@ jobs:
   unit_test:
     runs-on: ubuntu-latest
     environment: api
-    if: ${{ github.event.pull_request }} || ${{ github.event_name == 'push' }}
     steps:
       - name: Fetch Sources
         uses: actions/checkout@v3
