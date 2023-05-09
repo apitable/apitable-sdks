@@ -23,6 +23,7 @@ jobs:
   unit_test:
     runs-on: ubuntu-latest
     environment: api
+    if: ${{ github.event.pull_request }} || ${{ github.event_name == 'push' }}
     steps:
       - name: Fetch Sources
         uses: actions/checkout@v3
