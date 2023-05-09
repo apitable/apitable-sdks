@@ -36,9 +36,10 @@ public class DatasheetOperationTest {
     private final ApitableApiClient apitableApiClient = new ApitableApiClient(HOST_URL, new ApiCredential(API_KEY));
 
     @Test
-    void testAddDatasheet() {
+    void testAddDatasheetInFolder() {
         CreateDatasheetRequest request = new CreateDatasheetRequest();
-        request.setName("datasheet");
+        request.setName("datasheetInFolder");
+        request.setFolderId(FOLDER_ID);
         CreateDatasheetResponse response = apitableApiClient.getDatasheetApi().addDatasheet(SPACE_ID, request);
         assertThat(response).isNotNull();
         assertThat(response.getId()).isNotNull();
