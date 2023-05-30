@@ -1,14 +1,17 @@
 # APITable.py
+
 [![Latest Version](https://shields.mitmproxy.org/pypi/v/apitable.svg)](https://pypi.python.org/pypi/apitable)
 
 It is the official package for the Fusion API of APITable, and provides an API similar to the Django ORM style.
 
 # Requirements
+
 python3.6 +
 
 If you want to call apitable rest api, you need get the API Token first: visit the workbench of APITable, click the avatar in the lower left corner, and go to User Center > Developer Configuration. Click to generate Token (you need to bind your email for the first time).
 
 # Installation
+
 ```shell
 pip install --upgrade apitable
 ```
@@ -135,6 +138,7 @@ bug = apitable.datasheet("dstn2lEFltyGHe2j86", field_key="id", field_key_map={
 ```
 
 # Documentation
+
 ## records
 
 `dst.records` manage records in datasheets.
@@ -178,7 +182,7 @@ The QuerySet queried out is a collection of Records. A single Record can obtain 
 
 ## Field
 
-The mapping relationship between Field and Python data structure. The data with empty cells in the dimension table is always null, and the records returned by the API will not contain fields with null values.
+The mapping relationship between Field and Python data structure. The data with empty cells in the datasheet is always null, and the records returned by the API will not contain fields with null values.
 
 | Field Type       | Data type           |
 | ---------------- | ------------------- |
@@ -206,7 +210,7 @@ The mapping relationship between Field and Python data structure. The data with 
 | MagicLookUp      | any[]               |
 | Formula          | str / bool          |
 
-## all 
+## all
 
 all method will automatically handle paging loading all resources
 
@@ -250,9 +254,8 @@ dst.records.all(filterByFormula='{title}="hello"')
 
 See: [Tutorial getting started with formulas](https://help.apitable.com/docs/guide/tutorial-getting-started-with-formulas)
 
-
-
 ## FAQ
+
 ### Can I get the field type (meta) information of the datasheet?
 
 Can be get through the fields/views API.
@@ -274,11 +277,15 @@ If you write to a non-existent option, the option will be created automatically
 The current maximum is 1000 records. In the future, we will adjust the size of this limit according to the actual situation.
 
 # Development and test
+
 Create a new `.env`, the content can refer to `.env.example`.
+
 ```shell
 cp .env .env.example
 ```
+
 Then modify the test code in the `test/` folder for testing.
+
 ```shell
 pipenv install --pre
 pipenv shell
