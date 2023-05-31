@@ -1,5 +1,4 @@
-import axios, { AxiosInstance } from "axios";
-// import mpAdapter from 'axios-miniprogram-adapter';
+import axios, { AxiosError, AxiosInstance } from "axios";
 import qs from "qs";
 import { DEFAULT_HOST, DEFAULT_REQUEST_TIMEOUT } from "./const";
 import { Datasheet } from "./datasheet";
@@ -8,7 +7,6 @@ import { NodeManager } from "./node";
 import { SpaceManager } from "./space";
 import { mergeConfig, QPSController, isBrowser } from "./utils";
 
-// axios.defaults.adapter = mpAdapter;
 export class APITable {
   config: IAPITableClientConfig;
   axios: AxiosInstance;
@@ -91,6 +89,9 @@ export class APITable {
         })
       ).data;
     } catch (e) {
+      if ((e as AxiosError).isAxiosError) {
+        throw e;
+      }
       const error = e?.response?.data || e;
       if (error?.code && error?.message) {
         result = {
