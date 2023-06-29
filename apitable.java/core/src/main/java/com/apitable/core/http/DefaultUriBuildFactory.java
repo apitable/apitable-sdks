@@ -83,6 +83,10 @@ public class DefaultUriBuildFactory implements UriHandler {
         return (array == null || array.length == 0);
     }
 
+    public String getBaseUri() {
+        return this.baseUri;
+    }
+
     /**
      * Provide default URI variable values to use when expanding URI templates
      * with a Map of variables.

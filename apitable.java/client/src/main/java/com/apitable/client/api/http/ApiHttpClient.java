@@ -34,7 +34,9 @@ import com.apitable.core.http.OkHttpClientHttpRequestFactory;
 public class ApiHttpClient {
 
     public enum ApiVersion {
-        V1;
+        V1,
+        V2,
+        ;
 
         public String getApiNamespace() {
             return ("/fusion/" + name().toLowerCase());

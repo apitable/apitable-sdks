@@ -22,6 +22,10 @@
 
 package com.apitable.client.api;
 
+import com.apitable.client.api.http.ApiHttpClient.ApiVersion;
+import com.apitable.client.api.model.NodeSearchInfo;
+import com.apitable.client.api.model.NodeSearchRequest;
+import com.apitable.client.api.model.NodeSearchResult;
 import java.util.List;
 
 import com.apitable.client.api.http.AbstractApi;
@@ -46,6 +50,15 @@ public class NodeApi extends AbstractApi {
 
     public NodeApi(ApiHttpClient apiHttpClient) {
         super(apiHttpClient);
+    }
+
+    public List<NodeSearchInfo> searNodes(String spaceId, NodeSearchRequest request) {
+        GenericTypeReference<HttpResult<NodeSearchResult>> reference =
+            new GenericTypeReference<HttpResult<NodeSearchResult>>() {};
+        HttpResult<NodeSearchResult> result =
+            getHttpClientWithVersion(ApiVersion.V2).get(String.format(GET_NODES, spaceId),
+                new HttpHeader(), reference, request);
+        return result.getData().getNodes();
     }
 
     public List<Node> getNodes(String spaceId) {

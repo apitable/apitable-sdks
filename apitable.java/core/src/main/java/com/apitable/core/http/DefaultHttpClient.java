@@ -79,8 +79,12 @@ public class DefaultHttpClient extends AbstractHttpClient implements IHttpClient
         }
     }
 
-    private UriHandler getUriHandler() {
+    public UriHandler getUriHandler() {
         return this.uriHandler;
+    }
+
+    public HttpHeader getDefaultHeaders() {
+        return defaultHeaders;
     }
 
     public void setErrorHandler(HttpResponseErrorHandler errorHandler) {
