@@ -29,7 +29,6 @@ class NodeManager:
         return handle_response(node_detail_resp, GETNodeDetailResponse)
 
     def _search_nodes(self, space_id: str, **kwargs) -> GETSearchNodeListResponse:
-        space_id = kwargs.get('spaceId', self.space_id)
         search_node_list_resp = self.apitable.request.get(
             urljoin(self.apitable.api_base, f"/fusion/v2/spaces/{space_id}/nodes"),
             params=kwargs
