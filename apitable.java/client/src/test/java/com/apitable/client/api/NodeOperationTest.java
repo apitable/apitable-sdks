@@ -6,7 +6,7 @@ import com.apitable.client.api.http.ApiCredential;
 import com.apitable.client.api.model.Node;
 import com.apitable.client.api.model.NodeDetail;
 import com.apitable.client.api.model.NodeSearchInfo;
-import com.apitable.client.api.model.NodeSearchRequest;
+import com.apitable.client.api.model.NodeSearchParam;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -27,10 +27,9 @@ public class NodeOperationTest {
 
     @Test
     void testSearchNode() {
-        NodeSearchRequest request = new NodeSearchRequest();
-        request.setType("Datasheet");
+        NodeSearchParam param = NodeSearchParam.newInstance().withType("Datasheet");
         List<NodeSearchInfo> nodes =
-            apitableApiClient.getNodeApi().searNodes(SPACE_ID, request);
+            apitableApiClient.getNodeApi().searNodes(SPACE_ID, param);
         assertThat(nodes).isNotEmpty();
     }
 

@@ -22,35 +22,41 @@
 
 package com.apitable.client.api.model;
 
-public class NodeSearchRequest {
+import java.util.List;
+import java.util.stream.Collectors;
 
-    private String type;
+public class NodeSearchParam extends BaseQueryParam {
 
-    private int[] permissions;
+    private static final String TYPE = "type";
+    private static final String PERMISSIONS = "permissions";
+    private static final String QUERY = "query";
 
-    private String query;
-
-    public String getType() {
-        return type;
+    public static NodeSearchParam newInstance() {
+        return new NodeSearchParam();
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public NodeSearchParam() {
+        super();
     }
 
-    public int[] getPermissions() {
-        return permissions;
+    public NodeSearchParam(String type) {
+        withParam(TYPE, type);
     }
 
-    public void setPermissions(int[] permissions) {
-        this.permissions = permissions;
+    public NodeSearchParam withType(String type) {
+        withParam(TYPE, type);
+        return this;
     }
 
-    public String getQuery() {
-        return query;
+    public NodeSearchParam withPermissions(List<Integer> permissions) {
+        List<String> stringList =
+            permissions.stream().map(i -> Integer.toString(i)).collect(Collectors.toList());
+        withParam(PERMISSIONS, stringList);
+        return this;
     }
 
-    public void setQuery(String query) {
-        this.query = query;
+    public NodeSearchParam withQuery(String query) {
+        withParam(QUERY, query);
+        return this;
     }
 }

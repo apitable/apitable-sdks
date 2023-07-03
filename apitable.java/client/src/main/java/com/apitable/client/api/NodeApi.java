@@ -24,8 +24,9 @@ package com.apitable.client.api;
 
 import com.apitable.client.api.http.ApiHttpClient.ApiVersion;
 import com.apitable.client.api.model.NodeSearchInfo;
-import com.apitable.client.api.model.NodeSearchRequest;
+import com.apitable.client.api.model.NodeSearchParam;
 import com.apitable.client.api.model.NodeSearchResult;
+import com.apitable.core.utils.MapUtil;
 import java.util.List;
 
 import com.apitable.client.api.http.AbstractApi;
@@ -37,6 +38,7 @@ import com.apitable.client.api.model.NodeDetail;
 import com.apitable.client.api.model.NodeTree;
 import com.apitable.core.http.GenericTypeReference;
 import com.apitable.core.http.HttpHeader;
+import java.util.Map;
 
 
 /**
@@ -52,12 +54,15 @@ public class NodeApi extends AbstractApi {
         super(apiHttpClient);
     }
 
-    public List<NodeSearchInfo> searNodes(String spaceId, NodeSearchRequest request) {
+    public List<NodeSearchInfo> searNodes(String spaceId, NodeSearchParam param) {
+        Map<String, String> uriVariables = param.toMap();
+        String uri = String.format(GET_NODES, spaceId)
+            + MapUtil.extractKeyToVariables(uriVariables);
         GenericTypeReference<HttpResult<NodeSearchResult>> reference =
             new GenericTypeReference<HttpResult<NodeSearchResult>>() {};
         HttpResult<NodeSearchResult> result =
-            getHttpClientWithVersion(ApiVersion.V2).get(String.format(GET_NODES, spaceId),
-                new HttpHeader(), reference, request);
+            getHttpClientWithVersion(ApiVersion.V2).get(uri,
+                new HttpHeader(), reference, uriVariables);
         return result.getData().getNodes();
     }
 
