@@ -1,3 +1,7 @@
+# PLEASE NOTE, THIS PROJECT IS NO LONGER BEING MAINTAINED
+
+---
+
 # APITable
 
 [APITable](https://apitable.com) Golang SDK is the encapsulation of the APITable API.
@@ -6,7 +10,7 @@
 
 ### Environmental requirements
 
-go 1.15 +  
+go 1.15 +
 
 ### Install dependency
 
