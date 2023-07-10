@@ -1,7 +1,7 @@
 from typing import Dict, Any, List, Optional
 
 from apitable.types.embedlink import EmbedLinkThemeEnum, EmbedLinkPayload
-from apitable.types.node import NodeListItem, NodeDetail
+from apitable.types.node import NodeListItem, NodeDetail, NodeSearchInfo
 from apitable.types.space import SpaceListItem
 from apitable.types.record import RawRecord
 from apitable.types.view import MetaView
@@ -109,6 +109,12 @@ class GETNodeListResponseData(BaseModel):
 
 class GETNodeListResponse(ResponseBase):
     data: GETNodeListResponseData
+
+class GETSearchNodeListResponseData(BaseModel):
+    nodes: List[NodeSearchInfo]
+
+class GETSearchNodeListResponse(ResponseBase):
+    data: GETSearchNodeListResponseData
 
 
 class GETNodeDetailResponse(ResponseBase):

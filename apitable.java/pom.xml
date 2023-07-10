@@ -85,6 +85,11 @@
             <email>zhengxu@apitable.com</email>
             <organization>APITable LTD</organization>
         </developer>
+        <developer>
+            <name>Chambers</name>
+            <email>chenbochao@apitable.com</email>
+            <organization>APITable LTD</organization>
+        </developer>
     </developers>
 
     <issueManagement>
