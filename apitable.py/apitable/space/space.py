@@ -3,7 +3,6 @@ from urllib.parse import urljoin
 from apitable.datasheet import Datasheet, DatasheetManager
 from apitable.node import NodeManager
 from apitable.types.response import PostDatasheetMetaResponse
-from apitable.unit import Member, Role, Team
 from apitable.utils import get_dst_id, handle_response
 
 
@@ -20,26 +19,26 @@ class Space:
     def datasheets(self):
         return DatasheetManager(self)
 
-    @property
-    def member(self):
-        """
-        Space member.
-        """
-        return Member(self)
-
-    @property
-    def role(self):
-        """
-        Space role.
-        """
-        return Role(self)
-
-    @property
-    def team(self):
-        """
-        Space team.
-        """
-        return Team(self)
+    # @property
+    # def member(self):
+    #     """
+    #     Space member.
+    #     """
+    #     return Member(self)
+    #
+    # @property
+    # def role(self):
+    #     """
+    #     Space role.
+    #     """
+    #     return Role(self)
+    #
+    # @property
+    # def team(self):
+    #     """
+    #     Space team.
+    #     """
+    #     return Team(self)
 
     def datasheet(self, dst_id_or_url, **kwargs):
         """
