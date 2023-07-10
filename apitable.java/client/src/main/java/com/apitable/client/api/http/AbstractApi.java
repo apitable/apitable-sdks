@@ -22,7 +22,9 @@
 
 package com.apitable.client.api.http;
 
+import com.apitable.client.api.http.ApiHttpClient.ApiVersion;
 import com.apitable.core.http.DefaultHttpClient;
+import com.apitable.core.http.DefaultUriBuildFactory;
 
 /**
  * public api client
@@ -40,6 +42,20 @@ public abstract class AbstractApi {
 
     public DefaultHttpClient getDefaultHttpClient() {
         return this.apiHttpClient.getDefaultHttpClient();
+    }
+
+    public DefaultHttpClient getHttpClientWithVersion(ApiVersion apiVersion) {
+        DefaultHttpClient defaultHttpClient = this.apiHttpClient.getDefaultHttpClient();
+        String defaultUri =
+            ((DefaultUriBuildFactory) defaultHttpClient.getUriHandler()).getBaseUri();
+
+        String namespace = apiVersion.getApiNamespace();
+        String baseUri =
+            defaultUri.substring(0, defaultUri.length() - namespace.length()).concat(namespace);
+        DefaultHttpClient client = new DefaultHttpClient(baseUri);
+        client.addGlobalHeader(defaultHttpClient.getDefaultHeaders());
+        client.setResponseBodyHandler(new ApiResponseErrorHandler());
+        return client;
     }
 
     public int getDefaultPerPage() {
