@@ -2,7 +2,7 @@
 Unit of member instance.
 """
 
-from apitable.types.unit import ModifyMemberRequest, RawMember
+from apitable.types.unit_model import ModifyMemberRequest, RawMember
 from apitable.unit.unit import Unit
 
 

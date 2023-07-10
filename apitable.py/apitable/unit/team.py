@@ -1,7 +1,7 @@
 """
 Unit of team instance.
 """
-from apitable.types.unit import CreateTeamRequest, RawTeam, ModifyTeamRequest, PaginationTeam, PaginationMember
+from apitable.types.unit_model import CreateTeamRequest, RawTeam, ModifyTeamRequest, PaginationTeam, PaginationMember
 from apitable.unit import Unit
 
 

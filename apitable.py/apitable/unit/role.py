@@ -1,7 +1,7 @@
 """
 Unit of role instance.
 """
-from apitable.types.unit import ModifyRoleRequest, RawRole, PaginationRole, CreateRoleRequest, RoleUnit
+from apitable.types.unit_model import ModifyRoleRequest, RawRole, PaginationRole, CreateRoleRequest, RoleUnit
 from apitable.unit import Unit
 
 
