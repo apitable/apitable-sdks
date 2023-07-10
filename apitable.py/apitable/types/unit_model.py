@@ -51,8 +51,8 @@ class RawMember(RawUnit):
 
 class ModifyMemberRequest(BaseModel):
     name: Optional[str]
-    teams: Optional[list[str]]
-    roles: Optional[list[str]]
+    teams: Optional[List[str]]
+    roles: Optional[List[str]]
 
 
 class CreateRoleRequest(BaseModel):
@@ -70,14 +70,14 @@ class CreateTeamRequest(BaseModel):
     sequence: Optional[int]
     # default "0" means root team
     parentUnitId: Optional[str]
-    roles: Optional[list[str]]
+    roles: Optional[List[str]]
 
 
 class ModifyTeamRequest(BaseModel):
     name: Optional[str]
     sequence: Optional[int]
     parentUnitId: Optional[str]
-    roles: Optional[list[str]]
+    roles: Optional[List[str]]
 
 
 class RoleUnit(BaseModel):
