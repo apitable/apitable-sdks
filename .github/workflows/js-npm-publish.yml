@@ -4,11 +4,10 @@
 name: Node.js Publish Package
 
 on:
-  release:
+  push:
     paths: "apitable.js/.version"
-    types: [created]
     tags:
-      - "apitable.js@"
+      - "apitable.js@*"
 
 jobs:
   build:

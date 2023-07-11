@@ -1,11 +1,10 @@
 name: Python Publish Package
 
 on:
-  release:
+  push:
     paths: "apitable.py/.version"
-    types: [created]
     tags:
-      - "apitable.py@"
+      - "apitable.py@*"
 
 jobs:
   publish:
