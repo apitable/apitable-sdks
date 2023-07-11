@@ -16,7 +16,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/apitable/apitable-sdks",
     packages=[
-        "apitable", "apitable.datasheet", "apitable.types", "apitable.node", "apitable.space"
+        "apitable", "apitable.datasheet", "apitable.types", "apitable.node", "apitable.space", "apitable.unit"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
