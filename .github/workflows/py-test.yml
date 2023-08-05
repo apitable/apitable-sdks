@@ -30,7 +30,8 @@ jobs:
       - name: just build
         run: |
           cd apitable.py
-          poetry run python setup.py sdist bdist_wheel
+          make install
+          make setup
       - name: test
         env:
           DOMAIN: ${{secrets.DOMAIN}}
@@ -42,4 +43,4 @@ jobs:
           FOLDER_ID: ${{secrets.FOLDER_ID}}
         run: |
           cd apitable.py
-          poetry run pytest
+          make test
