@@ -25,5 +25,5 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           cd apitable.py
-          python setup.py sdist bdist_wheel
-          pipx run twine upload dist/*
+          poetry run python setup.py sdist bdist_wheel
+          poetry run popipx run twine upload dist/*
