@@ -10,6 +10,7 @@ class NodeTypeEnum(str, Enum):
     Form = 'Form'
     Dashboard = 'Dashboard'
     Mirror = 'Mirror'
+    ERROR = "ERROR NODE TYPE"
 
 
 class NodeListItem(BaseModel):
