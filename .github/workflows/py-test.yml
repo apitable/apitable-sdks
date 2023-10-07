@@ -6,12 +6,12 @@ on:
     paths:
       - "apitable.py/**"
       - ".github/workflows/py-test.yml"
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches: ["**"]
-    paths:
-      - "apitable.py/**"
-      - ".github/workflows/py-test.yml"
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   branches: ["**"]
+  #   paths:
+  #     - "apitable.py/**"
+  #     - ".github/workflows/py-test.yml"
 
 jobs:
   unit_test:
