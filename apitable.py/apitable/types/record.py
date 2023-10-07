@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from pydantic import ConfigDict, BaseModel, Field
 
 
@@ -8,6 +8,6 @@ class RawRecord(BaseModel):
     The record primitive type returned by the REST API
     """
 
-    id: str = Field(alias="recordId")
+    id: Optional[str] = Field(alias="recordId")
     data: Dict[str, Any] = Field(alias="id")
    
