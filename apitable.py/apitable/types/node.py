@@ -22,8 +22,8 @@ class NodeListItem(BaseModel):
 
 class NodeDetail(NodeListItem):
     type = NodeTypeEnum.Folder
-    children: Optional[List[NodeListItem]]
+    children: Optional[List[NodeListItem]] = None
 
 class NodeSearchInfo(NodeListItem):
     permission: int
-    parentId: Optional[str]
+    parentId: Optional[str] = None

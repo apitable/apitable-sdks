@@ -6,7 +6,7 @@ from apitable.types.space import SpaceListItem
 from apitable.types.record import RawRecord
 from apitable.types.view import MetaView
 from apitable.types.field import MetaField
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class ResponseBase(BaseModel):
@@ -16,7 +16,7 @@ class ResponseBase(BaseModel):
     code: int
     success: bool
     message: str
-    data: Optional[Any]
+    data: Optional[Any] = None
 
 
 Records = List[RawRecord]
@@ -59,12 +59,11 @@ class UploadFileResponse(ResponseBase):
 # meta field
 class GETMetaFieldResponseData(BaseModel):
     items: List[MetaField]
-
-    class Config:
-        # https://github.com/samuelcolvin/pydantic/issues/1250
-        fields = {
-            "items": "fields",  # The data returned by the server is fields, which are reserved for pydantic.
-        }
+    # TODO[pydantic]: The following keys were removed: `fields`.
+    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
+    model_config = ConfigDict(fields={
+        "items": "fields",  # The data returned by the server is fields, which are reserved for pydantic.
+    })
 
 
 class GETMetaFieldResponse(ResponseBase):
@@ -125,12 +124,11 @@ class PostDatasheetMetaResponseData(BaseModel):
     id: str
     createdAt: int
     items: List[PostMetaFieldResponseData]
-
-    class Config:
-        # https://github.com/samuelcolvin/pydantic/issues/1250
-        fields = {
-            "items": "fields",  # The data returned by the server is fields, which are reserved for pydantic.
-        }
+    # TODO[pydantic]: The following keys were removed: `fields`.
+    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
+    model_config = ConfigDict(fields={
+        "items": "fields",  # The data returned by the server is fields, which are reserved for pydantic.
+    })
 
 
 class PostDatasheetMetaResponse(ResponseBase):
@@ -138,8 +136,8 @@ class PostDatasheetMetaResponse(ResponseBase):
 
 
 class PostEmbedLinkResponseData(BaseModel):
-    payload: Optional[EmbedLinkPayload]
-    theme: Optional[EmbedLinkThemeEnum]
+    payload: Optional[EmbedLinkPayload] = None
+    theme: Optional[EmbedLinkThemeEnum] = None
     linkId: str
     url: str
 
