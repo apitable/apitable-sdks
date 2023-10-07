@@ -6,7 +6,7 @@ from apitable.types.space import SpaceListItem
 from apitable.types.record import RawRecord
 from apitable.types.view import MetaView
 from apitable.types.field import MetaField
-from pydantic import ConfigDict, BaseModel
+from pydantic import ConfigDict, BaseModel, Field
 
 
 class ResponseBase(BaseModel):
@@ -58,12 +58,7 @@ class UploadFileResponse(ResponseBase):
 
 # meta field
 class GETMetaFieldResponseData(BaseModel):
-    items: List[MetaField]
-    # TODO[pydantic]: The following keys were removed: `fields`.
-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
-    model_config = ConfigDict(fields={
-        "items": "fields",  # The data returned by the server is fields, which are reserved for pydantic.
-    })
+    items: List[MetaField] = Field(alias="fields")
 
 
 class GETMetaFieldResponse(ResponseBase):
@@ -123,12 +118,7 @@ class GETNodeDetailResponse(ResponseBase):
 class PostDatasheetMetaResponseData(BaseModel):
     id: str
     createdAt: int
-    items: List[PostMetaFieldResponseData]
-    # TODO[pydantic]: The following keys were removed: `fields`.
-    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
-    model_config = ConfigDict(fields={
-        "items": "fields",  # The data returned by the server is fields, which are reserved for pydantic.
-    })
+    items: List[PostMetaFieldResponseData] = Field(alias="fields")
 
 
 class PostDatasheetMetaResponse(ResponseBase):
