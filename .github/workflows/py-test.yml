@@ -25,7 +25,6 @@ jobs:
       - name: Python Poetry
         uses: abatilo/actions-poetry@v2
         with:
-          working-directory: ./apitable.py
           poetry-version: 1.5.1
       - name: just build
         run: |
