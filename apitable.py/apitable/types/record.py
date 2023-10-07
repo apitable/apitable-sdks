@@ -9,5 +9,5 @@ class RawRecord(BaseModel):
     """
 
     id: Optional[str] = Field(alias="recordId")
-    data: Dict[str, Any] = Field(alias="id")
+    data: Dict[str, Any] = Field(alias="fields")
    
