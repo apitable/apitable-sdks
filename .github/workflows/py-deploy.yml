@@ -27,4 +27,4 @@ jobs:
           cd apitable.py
           make install
           poetry run python setup.py sdist bdist_wheel
-          poetry run popipx run twine upload dist/*
+          poetry run pipx run twine upload dist/*
