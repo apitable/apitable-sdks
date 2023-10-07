@@ -21,7 +21,7 @@ class NodeListItem(BaseModel):
 
 
 class NodeDetail(NodeListItem):
-    type = NodeTypeEnum.Folder
+    type: NodeTypeEnum = NodeTypeEnum.Folder
     children: Optional[List[NodeListItem]] = None
 
 class NodeSearchInfo(NodeListItem):
