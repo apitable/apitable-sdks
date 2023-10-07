@@ -215,4 +215,4 @@ class MetaField(BaseModel):
         return type_property_map.get(type, None)
 
 
-FieldPropertyWithDstId.update_forward_refs()
+FieldPropertyWithDstId.model_rebuild()
