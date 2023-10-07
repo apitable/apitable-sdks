@@ -2,7 +2,7 @@ from enum import Enum
 from typing import List, Optional, Union, Any
 
 from pydantic import BaseModel
-from pydantic.typing import ForwardRef
+from typing import ForwardRef
 
 
 class MemberEnum(str, Enum):
