@@ -1,16 +1,22 @@
+from typing import List
 import unittest
 import time
 import warnings
+
+from apitable.datasheet.record import Record
 from apitable import Apitable
 from . import TOKEN, DOMAIN, SPACE_ID, DATASHEET_ID
 
 
 class TestCreateRecords(unittest.TestCase):
+
+
     def setUp(self):
         warnings.simplefilter("ignore", ResourceWarning)
         apitable = Apitable(TOKEN)
         apitable.set_api_base(DOMAIN)
         self.dst = apitable.space(SPACE_ID).datasheet(DATASHEET_ID)
+        self.created_records: List[Record] = []
 
     def test_record_create(self):
         time.sleep(1)
