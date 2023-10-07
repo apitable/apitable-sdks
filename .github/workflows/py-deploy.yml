@@ -2,7 +2,7 @@ name: Python Publish Package
 
 on:
   push:
-    paths: "apitable.py/.version"
+    paths: "apitable.py/pyproject.toml"
     tags:
       - "apitable.py@*"
 
