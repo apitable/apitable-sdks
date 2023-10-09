@@ -2,7 +2,7 @@ name: Python Publish Package
 
 on:
   push:
-    paths: "apitable.py/.version"
+    paths: "apitable.py/pyproject.toml"
     tags:
       - "apitable.py@*"
 
@@ -21,10 +21,9 @@ jobs:
           poetry-version: 1.5.1
       - name: Build and publish
         env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           cd apitable.py
           make install
-          poetry run python setup.py sdist bdist_wheel
-          poetry run popipx run twine upload dist/*
+          poetry publish --username=$PYPI_USERNAME --password=$PYPI_PASSWORD --build
