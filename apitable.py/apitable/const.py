@@ -5,7 +5,7 @@ try:
 except KeyError:
     MAX_WRITE_RECORDS_PRE_REQ = 10
 
-API_BASE = "https://apitable.com"
+API_BASE = "https://aitable.ai"
 
 API_ENDPOINT_DATASHEET = "/fusion/v1/datasheets"
 
