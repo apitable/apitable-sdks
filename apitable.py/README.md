@@ -279,6 +279,7 @@ The current maximum is 1000 records. In the future, we will adjust the size of t
 # Development and test
 
 Create a new `.env`, the content can refer to `.env.example`.
+Get .env parameters from https://developers.vika.cn/api/introduction/
 
 ```shell
 cp .env .env.example
@@ -290,4 +291,17 @@ Then modify the test code in the `test/` folder for testing.
 pipenv install --pre
 pipenv shell
 python -m unittest test
+```
+
+Another way
+```shell
+make install
+make setup
+make test 
+```
+
+Everytime change .env, you should
+
+```shell
+pip install --upgrade apitable
 ```
