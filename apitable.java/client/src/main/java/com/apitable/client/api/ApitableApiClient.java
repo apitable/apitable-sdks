@@ -182,4 +182,9 @@ public class ApitableApiClient {
         }
         return datasheetApi;
     }
+
+
+    public boolean isV3(){
+        return this.apiVersion == ApiVersion.V3;
+    }
 }

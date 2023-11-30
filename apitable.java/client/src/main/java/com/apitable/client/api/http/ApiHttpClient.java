@@ -36,6 +36,8 @@ public class ApiHttpClient {
     public enum ApiVersion {
         V1,
         V2,
+
+        V3
         ;
 
         public String getApiNamespace() {

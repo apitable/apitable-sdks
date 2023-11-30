@@ -32,6 +32,8 @@ import java.util.stream.Stream;
 import com.apitable.client.api.Constants;
 import com.apitable.client.api.exception.ApiException;
 import com.apitable.client.api.http.AbstractApi;
+import com.apitable.client.api.http.ApiHttpClient;
+import com.apitable.core.http.DefaultHttpClient;
 import com.apitable.core.http.GenericTypeReference;
 import com.apitable.core.http.HttpHeader;
 import com.apitable.core.utils.JacksonConverter;
@@ -64,8 +66,7 @@ public class Pager<T> implements Iterator<List<T>> {
 
     private JavaType javaType;
 
-    public Pager(AbstractApi api, String url, int itemsPerPage, Class<T> type) throws ApiException {
-        javaType = JacksonConverter.getCollectionJavaType(type);
+    public Pager(AbstractApi api, String url, int itemsPerPage, Class<T> type, boolean isV3) throws ApiException {javaType = JacksonConverter.getCollectionJavaType(type);
 
         this.api = api;
         this.url = url;
@@ -78,7 +79,42 @@ public class Pager<T> implements Iterator<List<T>> {
         Map<String, String> uriVariables = this.queryParam.toMap();
         GenericTypeReference<HttpResult<PagerInfo<T>>> reference = new GenericTypeReference<HttpResult<PagerInfo<T>>>() {};
         String uri = url + MapUtil.extractKeyToVariables(uriVariables);
-        HttpResult<PagerInfo<T>> result = api.getDefaultHttpClient().get(uri, new HttpHeader(), reference, uriVariables);
+        DefaultHttpClient client = api.getDefaultHttpClient();
+        if (isV3) {
+            client = api.getHttpClientWithVersion(ApiHttpClient.ApiVersion.V3);
+        }
+        HttpResult<PagerInfo<T>> result = client.get(uri, new HttpHeader(), reference, uriVariables);
+        if (result.getData().getRecords() != null) {
+            this.currentItems = JacksonConverter.toGenericBean(result.getData().getRecords(), javaType);
+            if (this.currentItems == null) {
+                throw new ApiException("Invalid response from server");
+            }
+        }
+        else {
+            this.currentItems.clear();
+        }
+        this.itemsPerPage = result.getData().getPageSize();
+        this.totalItems = result.getData().getTotal();
+        this.totalPages = this.totalItems == 0 ? 1 : ((this.totalItems - 1) / this.itemsPerPage + 1);
+    }
+
+    public Pager(AbstractApi api, String url, int itemsPerPage, Class<T> type) throws ApiException {
+        this(api, url, itemsPerPage, type, false);
+    }
+
+    public Pager(AbstractApi api, String url, ApiQueryParam queryParam, Class<T> type, boolean isV3) throws ApiException {
+        this.api = api;
+        this.url = url;
+        this.queryParam = queryParam;
+        javaType = JacksonConverter.getCollectionJavaType(type);
+        GenericTypeReference<HttpResult<PagerInfo<T>>> reference = new GenericTypeReference<HttpResult<PagerInfo<T>>>() {};
+        Map<String, String> uriVariables = this.queryParam.toMap();
+        String uri = url + MapUtil.extractKeyToVariables(uriVariables);
+        DefaultHttpClient client = api.getDefaultHttpClient();
+        if (isV3) {
+            client = api.getHttpClientWithVersion(ApiHttpClient.ApiVersion.V3);
+        }
+        HttpResult<PagerInfo<T>> result = client.get(uri, new HttpHeader(), reference, uriVariables);
         if (result.getData().getRecords() != null) {
             this.currentItems = JacksonConverter.toGenericBean(result.getData().getRecords(), javaType);
             if (this.currentItems == null) {
@@ -94,26 +130,7 @@ public class Pager<T> implements Iterator<List<T>> {
     }
 
     public Pager(AbstractApi api, String url, ApiQueryParam queryParam, Class<T> type) throws ApiException {
-        this.api = api;
-        this.url = url;
-        this.queryParam = queryParam;
-        javaType = JacksonConverter.getCollectionJavaType(type);
-        GenericTypeReference<HttpResult<PagerInfo<T>>> reference = new GenericTypeReference<HttpResult<PagerInfo<T>>>() {};
-        Map<String, String> uriVariables = this.queryParam.toMap();
-        String uri = url + MapUtil.extractKeyToVariables(uriVariables);
-        HttpResult<PagerInfo<T>> result = api.getDefaultHttpClient().get(uri, new HttpHeader(), reference, uriVariables);
-        if (result.getData().getRecords() != null) {
-            this.currentItems = JacksonConverter.toGenericBean(result.getData().getRecords(), javaType);
-            if (this.currentItems == null) {
-                throw new ApiException("Invalid response from server");
-            }
-        }
-        else {
-            this.currentItems.clear();
-        }
-        this.itemsPerPage = result.getData().getPageSize();
-        this.totalItems = result.getData().getTotal();
-        this.totalPages = this.totalItems == 0 ? 1 : ((this.totalItems - 1) / this.itemsPerPage + 1);
+        this(api, url, queryParam, type, false);
     }
 
     public int getCurrentPage() {

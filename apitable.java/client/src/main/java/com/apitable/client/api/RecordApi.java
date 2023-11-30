@@ -39,6 +39,7 @@ import com.apitable.client.api.model.PagerInfo;
 import com.apitable.client.api.model.Record;
 import com.apitable.client.api.model.Records;
 import com.apitable.client.api.model.UpdateRecordRequest;
+import com.apitable.core.http.DefaultHttpClient;
 import com.apitable.core.http.GenericTypeReference;
 import com.apitable.core.http.HttpHeader;
 import com.apitable.core.utils.CollectionUtil;
@@ -62,6 +63,10 @@ public class RecordApi extends AbstractApi {
     }
 
     public List<Record> getRecords(String datasheetId, int page, int itemsPerPage) throws ApiException {
+        return getRecords(datasheetId, page, itemsPerPage, false);
+    }
+
+    public List<Record> getRecords(String datasheetId, int page, int itemsPerPage, boolean isV3) throws ApiException {
         if (page < 0 || itemsPerPage < 0) {
             throw new ApiException("page or itemsPerPage don't set right");
         }
@@ -69,7 +74,11 @@ public class RecordApi extends AbstractApi {
         Map<String, String> uriVariables = queryParam.toMap();
         GenericTypeReference<HttpResult<PagerInfo<Record>>> reference = new GenericTypeReference<HttpResult<PagerInfo<Record>>>() {};
         String uri = String.format(PATH, datasheetId) + MapUtil.extractKeyToVariables(uriVariables);
-        HttpResult<PagerInfo<Record>> result = getDefaultHttpClient().get(uri, new HttpHeader(), reference, uriVariables);
+        DefaultHttpClient client = getDefaultHttpClient();
+        if (isV3) {
+            client = getHttpClientWithVersion(ApiHttpClient.ApiVersion.V3);
+        }
+        HttpResult<PagerInfo<Record>> result = client.get(uri, new HttpHeader(), reference, uriVariables);
         return result.getData().getRecords();
     }
 
@@ -77,11 +86,26 @@ public class RecordApi extends AbstractApi {
         return new Pager<>(this, String.format(PATH, datasheetId), getDefaultPerPage(), Record.class);
     }
 
+
+    public Pager<Record> getRecords(String datasheetId, boolean isV3) throws ApiException {
+        if (isV3) {
+            return new Pager<>(this, String.format(PATH, datasheetId), getDefaultPerPage(), Record.class, true);
+        }
+        return getRecords(datasheetId);
+    }
+
     public Pager<Record> getRecords(String datasheetId, int itemsPerPage) throws ApiException {
         return new Pager<>(this, String.format(PATH, datasheetId), itemsPerPage, Record.class);
     }
 
     public Pager<Record> getRecords(String datasheetId, ApiQueryParam queryParam) throws ApiException {
+        return new Pager<>(this, String.format(PATH, datasheetId), queryParam, Record.class);
+    }
+
+    public Pager<Record> getRecords(String datasheetId, ApiQueryParam queryParam, boolean isV3) throws ApiException {
+        if (isV3) {
+            return new Pager<>(this, String.format(PATH, datasheetId), queryParam, Record.class, true);
+        }
         return new Pager<>(this, String.format(PATH, datasheetId), queryParam, Record.class);
     }
 
