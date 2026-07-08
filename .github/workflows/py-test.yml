@@ -35,6 +35,7 @@ jobs:
           make install
           make setup
       - name: test
+        if: ${{ secrets.TOKEN != '' }}
         env:
           DOMAIN: ${{secrets.DOMAIN}}
           TOKEN: ${{secrets.TOKEN}}
