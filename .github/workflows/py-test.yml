@@ -9,6 +9,10 @@ on:
     paths:
       - "apitable.py/**"
       - ".github/workflows/py-test.yml"
+  pull_request_target:
+    paths:
+      - "apitable.py/**"
+      - ".github/workflows/py-test.yml"
 
 jobs:
   unit_test:
@@ -16,6 +20,8 @@ jobs:
     environment: api
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v4
         with:
           python-version: 3.10.12
@@ -29,6 +35,7 @@ jobs:
           make install
           make setup
       - name: test
+        if: ${{ secrets.TOKEN != '' }}
         env:
           DOMAIN: ${{secrets.DOMAIN}}
           TOKEN: ${{secrets.TOKEN}}
