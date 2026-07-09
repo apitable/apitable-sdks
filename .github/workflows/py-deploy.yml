@@ -2,7 +2,6 @@ name: Python Publish Package
 
 on:
   push:
-    paths: "apitable.py/pyproject.toml"
     tags:
       - "apitable.py@*"
 
@@ -13,17 +12,19 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.10.12
+          python-version: "3.10"
       - name: Python Poetry
         uses: abatilo/actions-poetry@v2
         with:
-          working-directory: ./apitable.py
           poetry-version: 1.5.1
       - name: Build and publish
         env:
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
+          VERSION="${GITHUB_REF_NAME#apitable.py@}"
           cd apitable.py
-          make install
+          poetry version "$VERSION"
+          poetry lock --no-update
+          poetry install
           poetry publish --username=$PYPI_USERNAME --password=$PYPI_PASSWORD --build
