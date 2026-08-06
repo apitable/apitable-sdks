@@ -16,10 +16,10 @@ class ApiTable {
     /**
      * @param string $apiToken  (required) your API token, for authentication.
      * @param string $fieldKey  (optional）globally specifies the key of the query and returned field. use column names by default. when value is 'id', field id will be used as the query and return. (Using id can avoid code failure caused by column name modification)
-     * @param string $host (optional）destination server address, default: https://api.apitable.com
+     * @param string $host (optional）destination server address, default: https://aitable.ai
      * @param int $requestTimeout (optional）request expiration time, default 10s.
      */
-    public static function auth($apiToken, $host = 'https://api.apitable.com', $fieldKey = 'name', $requestTimeout = 10) {
+    public static function auth($apiToken, $host = 'https://aitable.ai', $fieldKey = 'name', $requestTimeout = 10) {
         self::$apiToken = $apiToken;
         self::$requestTimeout = $requestTimeout;
         self::$host = $host;

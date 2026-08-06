@@ -34,7 +34,7 @@ import com.apitable.client.api.http.ApiHttpClient.ApiVersion;
  */
 public class ApitableApiClient {
 
-    private static final String DEFAULT_HOST = "https://api.apitable.com";
+    private static final String DEFAULT_HOST = "https://aitable.ai";
 
     private final ApiVersion apiVersion;
 

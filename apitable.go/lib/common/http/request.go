@@ -17,7 +17,7 @@ const (
 	HTTP  = "http"
 	HTTPS = "https"
 
-	Domain = "api.apitable.com"
+	Domain = "aitable.ai"
 	Path   = "/"
 )
 
